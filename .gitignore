@@ -1,0 +1,23 @@
+# ---- secrets — NEVER commit ----
+.deploy/
+*.pem
+*.key
+**/*keypair*.json
+**/id.json
+.env
+.env.*
+
+# ---- build artifacts ----
+.anchor
+.DS_Store
+target
+**/*.rs.bk
+node_modules
+test-ledger
+.yarn
+.next
+web/.next
+
+# ---- misc ----
+*.zip
+/tmp/
