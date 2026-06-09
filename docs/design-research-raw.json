@@ -1,0 +1,470 @@
+{
+  "summary": "Research reference sites (ZK infra, Solana dapps, award-winning unusual web design, temporal/archival aesthetic) and synthesize a concrete, distinctive design direction for the Yore coprocessor site",
+  "agentCount": 5,
+  "logs": [],
+  "result": {
+    "findings": [
+      {
+        "category": "ZK / coprocessor infrastructure",
+        "sites": [
+          {
+            "name": "Succinct (SP1)",
+            "url": "https://www.succinct.xyz/",
+            "visualLanguage": "Dark, confident, almost editorial. Deep navy near-black canvas with bold geometric accent shapes; reads more like a serious systems/research brand than a memecoin-era crypto site. Centered hero, generous negative space.",
+            "colorAndType": "Palette pulled from their CSS: deep navy #010F22 and #022C64 base, near-white #F4FBFF / #F5FBFF text, with three loud accents used sparingly as flat geometric SVG shapes: lime/chartreuse #86B400, sky blue #90DCFF, and hot magenta #FE11C5. Clean sans-serif (custom/grotesk feel) for headlines and body; no heavy mono on the marketing page.",
+            "motion": "Floating/parallax geometric SVG shapes (hero-shapes-yellow.svg, hero-shapes-blue.svg) drift behind the headline to add depth without distracting from copy. Restrained, premium-feeling motion.",
+            "standoutTechniques": "One-line declarative hero 'Prove what's real' that sells a worldview instead of a feature list. Abstract flat-vector shapes stand in for 'cryptographic math' rather than literal circuit diagrams. Use cases (digital assets, privacy, media, AI, identity, cybersecurity) shown as a clean icon grid to make ZK tangible.",
+            "takeawayForYore": "Borrow the 'declarative truth' headline pattern ('Prove what's real') and a restrained dark navy + 2-3 saturated flat accents. For Yore, an equivalent could be 'Prove what happened' / 'Verify the past on-chain.' The flat-geometric-shape motif is a good way to signal cryptography without drawing literal Merkle trees everywhere."
+          },
+          {
+            "name": "Axiom",
+            "url": "https://www.axiom.xyz/",
+            "visualLanguage": "Dark mode, high-contrast, modular, product-led. Webflow-built with a strict design-token system (brand-1/2/3, is-dark cards). Left-aligned hero text block, clear product split (OpenVM + Proving API).",
+            "colorAndType": "Deep charcoal/near-black background, white type. Brand accents from CSS: electric cyan #05D1DD and indigo-blue #4D65FF — the classic 'verifiable cyan + cryptographic indigo' pairing. Sans-serif throughout (Google Fonts loaded), bold weights for headlines, no neon overload.",
+            "motion": "AVIF/WebP hero illustrations ('ZK without limits') with mobile-specific variants; tasteful, performance-conscious. Motion is subtle hover/reveal rather than big WebGL.",
+            "standoutTechniques": "Token-driven card system gives a consistent, engineered feel across product modules. Hero copy is concrete infrastructure language ('The tools and infrastructure to integrate ZK into any application') rather than vague vision. Cyan+indigo accent discipline reads credible, not loud.",
+            "takeawayForYore": "Adopt a strict design-token accent system (one cyan, one indigo, one neutral) so every section feels engineered and consistent — this is a big driver of 'credible vs generic.' Cyan #05D1DD / indigo #4D65FF is a proven 'verifiable compute' accent pair Yore could echo or deliberately diverge from."
+          },
+          {
+            "name": "Lagrange",
+            "url": "https://www.lagrange.dev/",
+            "visualLanguage": "Dark, enterprise/defense-grade, almost geopolitical. Black/charcoal with deep blue + electric teal accents and subtle gradient overlays. Heavy nav (Technology/Ecosystem/Articles dropdowns), product carousels, stats dashboard.",
+            "colorAndType": "Dark theme with deep blue and electric-teal interactive accents; mostly monochromatic white/off-white type (a neutral #AEB6B7 gray for secondary text shows in CSS). Modern geometric sans (likely custom). Mono only hinted in code/technical sections.",
+            "motion": "Responsive carousels for product/testimonial sections, recurring animated arrow/vector icons (Vector 150) directing attention, layered SVG illustrations (DeepProve illo) suggesting computational abstraction.",
+            "standoutTechniques": "Big live-credibility metrics ('3M+ AI Inferences', '11M+ ZK Proofs') as a stats dashboard — quantified proof of scale. Bold positioning copy ('Cryptographic Supremacy', 'the safeguard of truth') leans into a serious, almost national-security tone that differentiates from playful crypto. 15+ partner logo grid for trust.",
+            "takeawayForYore": "Steal the live counter / proof-volume dashboard idea — for a historical-state coprocessor, surface 'N historical states proven', 'M block ranges verified', latency, and a verifiable on-chain reference. Real numbers + partner logos are the fastest path to credibility. The defense/'truth' tone is optional but effective for a verifiability product."
+          },
+          {
+            "name": "Brevis",
+            "url": "https://brevis.network/",
+            "visualLanguage": "Pure-black, technical, documentation-forward. Minimalist and serious; positions itself as 'the infinite compute layer for Web3' across a stack (Pico zkVM, ZK Data Coprocessor, Pico Prism, Vera, ProverNet).",
+            "colorAndType": "Black #000000 base. Brand mark is a compact 'V/B' glyph plus a circular badge variant. Technical/professional rather than playful; sans-serif. (Hero is JS-rendered so exact accent hexes weren't extractable, but the identity is monochrome-black-led.)",
+            "motion": "Mostly static, content/diagram-driven; emphasis on explaining the stack rather than spectacle. Educational series branding ('From 0 Knowledge to Zero Knowledge').",
+            "standoutTechniques": "Names each component of the proving stack as a distinct product (zkVM, coprocessor, real-time prover, media authenticity, prover marketplace) — communicates 'serious infra company' through a legible product taxonomy. Use-case framing around 'Blockchain Intelligence' and historical-data access.",
+            "takeawayForYore": "Brevis' 'ZK Data Coprocessor for trustless access to historical blockchain data' is the closest analog to Yore's mission — study their data-access framing. Lesson: give your sub-capabilities clear product names and explain the off-chain-heavy / on-chain-cheap flow with a simple stack diagram rather than relying on vibe."
+          },
+          {
+            "name": "Boundless (RISC Zero)",
+            "url": "https://boundless.network/",
+            "visualLanguage": "Dark, minimal, production/SLA-focused. Reads like infrastructure (think a cloud-provider landing page) more than crypto — centered large hero, clean top nav (Docs/Network/Blog/Careers).",
+            "colorAndType": "Dark theme, near-monochromatic with a soft radial gradient background (ellipse-bg.svg) for depth. Typeface is Lineto's Replica LL (ReplicaLL-Regular/Bold woff2 in the CSS) — a respected Swiss grotesk that instantly signals design maturity over a default Inter/system stack.",
+            "motion": "Subtle: a single ellipse/gradient glow behind centered type; CTAs ('Get started', 'Run a prover', 'View pricing & stats') as the main visual anchors. Restraint over animation.",
+            "standoutTechniques": "Leads with hard reliability numbers — '99.99% uptime, high-performance compute, and below-market cost' — and a two-sided-marketplace CTA structure (developers vs prover operators). Sells trust via SLA language, not crypto hype. Replica LL is the quiet credibility move.",
+            "takeawayForYore": "Two big borrowables: (1) pick a real licensed grotesk (Replica LL, ABC/Lineto, GT America, Söhne) instead of Inter — it single-handedly lifts perceived quality; (2) lead with operational guarantees (uptime, cost, latency) framed as 'off-chain heavy, cheap on-chain verification'. The soft single-ellipse gradient on black is an easy, elegant hero background for Yore."
+          },
+          {
+            "name": "RISC Zero",
+            "url": "https://risczero.com/",
+            "visualLanguage": "Deliberately LIGHT — warm, paper-like, almost academic. A contrarian move against the dark-crypto default that reads as research-lab credibility.",
+            "colorAndType": "Warm cream/off-white base (#E5E3D5 in CSS) with dark text — feels like a whitepaper or print journal. Centered minimalist hero, lots of white space, sans-serif. Custom woff2 fonts.",
+            "motion": "Minimal; clarity and message-first. 'Learn More' CTAs route to developer docs.",
+            "standoutTechniques": "Mission-level headline 'Building a world where everything can be verified' plus precise technical promise ('cryptographically certain that the output of a computation is correct'). Use cases grounded in the real world (financial transactions, compliance, software supply chains) rather than abstract crypto.",
+            "takeawayForYore": "RISC Zero proves you can stand out by NOT going dark/neon. A warm off-white #E5E3D5 'archival/paper' palette would be a genuinely on-theme, differentiated choice for a HISTORICAL-state coprocessor (history = archive = paper/ledger aesthetic). Pair the mission headline with one exact technical guarantee sentence."
+          },
+          {
+            "name": "Herodotus",
+            "url": "https://herodotus.dev/",
+            "visualLanguage": "Dark, engineering-credible, developer-warm. Modular card sections (Verifiable Data / Verifiable Compute / Scaling Blockchains) with a friendly 'by devs for devs, with <3' voice. Framer-built.",
+            "colorAndType": "Dark slate base (#101418, #07090B), light grays for text (#C6C6C7, #A4A4A5, #E7E6E7), and a family of blue accents: #00A3FF, #0395E8, #0C68F3. Typography is the standout: IBM Plex Sans + IBM Plex Mono (engineering/credibility hallmark) with Outfit for display and a Meow Script flourish for the 'with <3' tagline; Inter as fallback.",
+            "motion": "Framer-driven reveal/scroll animations; card-based hover states. Tasteful, not heavy.",
+            "standoutTechniques": "IBM Plex Mono usage gives an authentic 'systems engineering' feel. Splits the offering into three legible pillars. The '<3' / Meow Script humanizing touch plus storage-proof framing ('trust-minimized solutions for the sovereign future') balances rigor with approachability.",
+            "takeawayForYore": "Herodotus is the single closest peer to Yore — storage proofs / historical data access across chains. IBM Plex Sans + IBM Plex Mono is a free, high-credibility type pairing Yore can adopt immediately. Note their 'Verifiable Data / Verifiable Compute' pillar split as a content model. Blue-accent + dark-slate is the safe default; consider diverging to stand out."
+          },
+          {
+            "name": "Nexus",
+            "url": "https://www.nexus.xyz/",
+            "visualLanguage": "Dark, sci-fi 'world supercomputer' feel with a strong terminal/mono streak. Positions as 'Purpose-Built for Verifiable Finance' building the 'Verifiable Internet'.",
+            "colorAndType": "Dark base with a bright electric blue accent #0095FF. Signature typeface is DM Mono (font-family:var(--font-dm-mono)) — a monospace-led identity that screams 'computer / proof / verifiable' and reads distinctly technical.",
+            "motion": "Their best asset: the Global Activity Map — a real-time interactive 3D globe showing live node activity, peer-to-peer connections, and block data across continents. Turns abstract 'distributed proving network' into a living visualization.",
+            "standoutTechniques": "Mono-first typography (DM Mono) as core brand, not just code blocks. Live globe/data-viz makes the network feel alive and verifiable in real time. 'No code obfuscation, no proprietary components, source-available' transparency messaging reinforces the verifiability promise.",
+            "takeawayForYore": "Two strong borrows: (1) a mono-led type system (DM Mono / IBM Plex Mono / JetBrains Mono) to telegraph 'verifiable computation' instantly; (2) a live data-viz hero — for Yore, animate a real-time feed of historical state queries being proven off-chain and verified on-chain (a 'proof activity map' or scrolling block-range ledger) instead of a static diagram."
+          },
+          {
+            "name": "=nil; Foundation",
+            "url": "https://nil.foundation/",
+            "visualLanguage": "Stark, minimal, near-monochrome and almost brutalist-clean. Single-column responsive, modular cards, a roadmap timeline (Devnet -> Testnet -> Mainnet Alpha), community avatar grid. Restraint over decoration.",
+            "colorAndType": "Tight grayscale system: #212121 (ink), #5B5B5B (secondary), #F1F1F1 (light surfaces). Type is Roboto Mono (UcCO… woff2 hashes in CSS) plus a sans — a monospace-anchored, minimal identity. Accent color used very sparingly.",
+            "motion": "Minimal; interactive community showcase (clickable member avatars), sandbox link inviting hands-on exploration. Accessibility/clarity over motion.",
+            "standoutTechniques": "Monochrome + Roboto Mono = austere 'cryptography research' credibility. Roadmap timeline and community grid build trust through transparency and traction rather than visuals. Plain-language benefit copy ('Lower transaction fees', 'On-demand scaling') over jargon.",
+            "takeawayForYore": "If Yore wants a 'pure research / no-hype' positioning, =nil;'s monochrome + Roboto Mono is the template — extremely cheap to execute and very credible. A visible roadmap timeline and 'sandbox/try-it' link are easy trust-builders. Risk: monochrome can read generic, so pair it with one signature element (a single accent or a distinctive data-viz)."
+          }
+        ],
+        "patterns": [
+          "Mono-led typography is the strongest single 'verifiable compute' signal. Nexus (DM Mono), Herodotus (IBM Plex Mono), and =nil; (Roboto Mono) all anchor identity in monospace — it reads as 'proof / computation / terminal' instantly and cheaply differentiates from generic crypto. Pair a mono with a clean grotesk for headlines.",
+          "Dark navy/charcoal base + 2-3 disciplined saturated accents is the category default. Recurring accents: verifiable cyan (#05D1DD Axiom, #0095FF Nexus, teal Lagrange) and cryptographic indigo/blue (#4D65FF Axiom, #00A3FF/#0C68F3 Herodotus, #022C64 Succinct). Succinct adds magenta #FE11C5 + lime #86B400 to stand out. Discipline (token-driven, sparing) is what separates credible from gaudy.",
+          "Declarative one-line 'truth' headlines beat feature lists: 'Prove what's real' (Succinct), 'Building a world where everything can be verified' (RISC Zero), 'trust-minimized solutions for the sovereign future' (Herodotus). Sell a worldview, then back it with ONE precise technical guarantee sentence.",
+          "Quantified credibility: live counters and SLA numbers do the heavy lifting. Lagrange ('11M+ ZK Proofs', '3M+ AI Inferences'), Boundless ('99.99% uptime, below-market cost'). Hard numbers + partner-logo grids signal real traction over hype.",
+          "Abstract geometric/data-viz over literal math. Best sites avoid drawing Merkle trees; they use flat geometric SVG shapes (Succinct), soft single-ellipse gradients (Boundless), or live network visualizations (Nexus globe) to evoke cryptography. A real-time 'proof activity' visualization is the most memorable, ownable asset.",
+          "Licensed/distinctive typefaces lift perceived quality dramatically: Boundless uses Lineto's Replica LL, Herodotus uses the IBM Plex family. Defaulting to Inter/system reads generic; a real grotesk or the Plex pairing is a quiet but huge credibility upgrade.",
+          "Legible product taxonomy = serious infra. Brevis, Axiom, and Herodotus split their stack into clearly named pillars (zkVM / coprocessor / prover / data vs compute), which communicates engineering maturity better than a single vague pitch.",
+          "Restrained, performance-conscious motion (parallax shapes, gradient glows, Framer reveals, one hero data-viz) — not heavy WebGL everywhere. The high-tech feel comes from precision and consistency, not spectacle."
+        ],
+        "pitfalls": [
+          "Generic neon-on-black 'crypto' gradients (purple-to-blue glow + glassmorphism cards) — overused and reads low-trust. The credible sites use disciplined flat accents, not blurry rainbow gradients.",
+          "Defaulting to Inter + a system stack with no signature type choice — the single biggest 'generic startup' tell. A mono anchor or a licensed grotesk fixes it.",
+          "Vague vision copy with no concrete technical guarantee. 'Building the future of X' without a precise sentence ('cryptographically certain the output of a computation is correct') reads hollow.",
+          "Literal, cluttered cryptography diagrams (Merkle trees, circuit gates) in the hero — abstract or data-viz reads more confident; save real diagrams for a 'How it works' section.",
+          "Over-animated WebGL hero that hurts load time and buries the message. Motion should add depth or show live data, not perform.",
+          "Fake/placeholder stats. Counters and partner logos only build trust if they're real and verifiable — for a verifiability product, unverifiable marketing numbers are self-undermining.",
+          "Monochrome-minimal with zero signature element — clean but forgettable; needs one ownable hook (accent, type, or visualization).",
+          "Buzzword soup ('infinite trustless verifiable infinite compute layer') — the strongest sites use plain benefit language plus precise technical claims, not stacked adjectives."
+        ]
+      },
+      {
+        "category": "Solana ecosystem dapps",
+        "sites": [
+          {
+            "name": "Helius",
+            "url": "https://www.helius.dev/",
+            "visualLanguage": "Dark, developer-grade infra marketing site. Near-black background with restrained accent color, lots of negative space, modular product cards (LaserStream, Sender, Gatekeeper). Reads enterprise/SaaS-credible, not crypto-noisy. Logo wall + customer quotes (Phantom, Jupiter, Coinbase) used as primary trust signal.",
+            "colorAndType": "Dark base (~#0A0A0B / near-black) with a warm orange-amber brand accent rather than Solana purple, which differentiates it from generic Solana infra. Clean geometric sans for headings, monospace for code/endpoints. High-contrast white-on-black body.",
+            "motion": "Subtle: fade/slide reveals on scroll, animated metric counters (billions of requests, 99.99% uptime), hover lift on product cards. Restraint is the point - it signals reliability over flash.",
+            "standoutTechniques": "Trust-via-logos + named testimonials; live-feeling numeric stats; code snippets shown inline as design elements; SOC 2 / uptime badges as credibility chrome. Product naming system (LaserStream/Sender/Gatekeeper) gives a coherent catalog feel.",
+            "takeawayForYore": "This is the closest reference to 'premium Solana INFRA' (vs dapp). For a verifiable historical-state coprocessor, copy: dark restrained palette, code/endpoints rendered as first-class visual objects, animated trust stats, and a named-product taxonomy. Avoid the purple gradient entirely to read as serious infra, like Helius does."
+          },
+          {
+            "name": "Jupiter (jup.ag)",
+            "url": "https://jup.ag/",
+            "visualLanguage": "Dark trading superapp ('The Home of Onchain Finance'). Centered swap card as the hero object floating over a dark backdrop; left rail / top nav routes between Spot, Perps, Lend, Pro. 'Invisible DeFi' philosophy - chain complexity hidden behind a CEX-like surface. Playful cat (Catdet) mascot brand layered over otherwise serious trading UI.",
+            "colorAndType": "Dark teal/green-leaning dark theme (Jupiter's own green-jade accent rather than full Solana purple), with the swap card in a slightly lighter elevated surface. Rounded, friendly sans; large legible numerics for amounts/rates. Token logos provide most of the color.",
+            "motion": "Number tick/animate on quote refresh, route-line animation showing the aggregator path between tokens, smooth modal transitions, animated wallet-connect sheet. Route visualization is the signature interaction - makes aggregation feel tangible.",
+            "standoutTechniques": "The swap card as a self-contained hero; aggregator route visualization; token search with logos; one unified shell for many products (spot/perps/DCA/limit/lend) via tabs. Wallet-connect is a clean bottom-sheet/modal with provider grid.",
+            "takeawayForYore": "Best model for the centered 'one action card' hero pattern and for visualizing a multi-hop process (route lines) - directly analogous to visualizing a verification/derivation path through historical state. Borrow the 'one shell, many tabs' app structure and the animated-number-on-refresh for live data. The cat mascot is the kind of playful layer to AVOID for serious infra."
+          },
+          {
+            "name": "Phantom",
+            "url": "https://phantom.app/",
+            "visualLanguage": "The benchmark for 'premium + accessible' web3. Friendly, confident, rounded brand by Bakken & Baeck; the ghost mascot makes crypto feel approachable. Marketing site is high-craft with 3D and motion. Note: phantom.land (the studio, Awwwards SOTD Jun 2025, 7.61) is a different entity - near-monochrome #202020, WebGL/3D, gesture interactions - useful as a motion reference but distinct from the wallet.",
+            "colorAndType": "Signature Phantom purple (~#AB9FF2 soft lavender, plus a deeper #4C2A85-ish) - softer and friendlier than Solana's harsh #9945FF. Typeface from F37 Foundry. Light and dark surfaces; lots of rounded corners and soft shadows.",
+            "motion": "Framer Motion + Lottie for interactive elements; smooth scroll via linear interpolation (lerp); logo animation; playful ghost animations that 'blend ease with playfulness and dynamic movement.' Motion is core to the brand, not decoration.",
+            "standoutTechniques": "Lottie-driven mascot animations, lerp smooth-scroll, 3D hero elements, a coherent motion system tied to brand voice. The accessibility framing - 'visualise Web3 as exciting and accessible' - drives every choice.",
+            "takeawayForYore": "Borrow the softer purple (lavender over neon) if any Solana-purple is used at all, and the F37/Framer-Motion + Lottie craft level. For a coprocessor, adopt Phantom's motion-as-system discipline but keep the tone more technical - a mascot would undercut 'verifiable' credibility."
+          },
+          {
+            "name": "Tensor",
+            "url": "https://www.tensor.trade/",
+            "visualLanguage": "Dark, dense, pro-trader NFT terminal. Composable real-time UI built for high-frequency traders - feels like a Bloomberg terminal for NFTs. Offers a simpler 'Lite Mode' alongside the dense default, a smart density toggle pattern.",
+            "colorAndType": "Dark base, high-contrast data text, accent color reserved for buy/bid/sweep actions. Compact type scale and tight row heights to maximize on-screen data. Rarity/price charting uses color to encode rarity tiers.",
+            "motion": "Real-time updates with no full reloads (rows/prices update in place), bulk-sweep selection feedback, instant bid/list flows. Speed and live-updating-in-place is the entire design thesis.",
+            "standoutTechniques": "Real-time composable UI that updates without reload; bulk-sweep multi-select; rarity-vs-price charting; AMM/liquidity aggregation surfaced inline; Lite vs Pro density modes. Aggregates other marketplaces without leaving the shell.",
+            "takeawayForYore": "Strong reference for data density done cleanly: tight tables, in-place live updates (no jarring reloads), and a Lite/Pro toggle so power users get density and newcomers get calm. For on-chain historical data this maps directly - show verification rows updating live in place, with a density toggle."
+          },
+          {
+            "name": "Drift Protocol",
+            "url": "https://app.drift.trade/",
+            "visualLanguage": "Serious dark perps/derivatives exchange. Information-dense but logically organized for traders who understand derivatives - closer to a real trading venue (orderbook, positions, funding) than a light DeFi toy. Single unified shell manages spot + futures positions together.",
+            "colorAndType": "Dark trading theme; green/red for long/short and PnL; accent for primary actions. Monospace or tabular numerics for prices/orderbook alignment. Compact controls for advanced order flags (post-only, reduce-only, IOC).",
+            "motion": "Live orderbook/price streaming, position PnL updating in real time, smooth order-entry panel. Composable 'Builder Codes' let third parties build UIs on Drift liquidity - an open UI layer.",
+            "standoutTechniques": "Advanced-order framework surfaced in compact UI; unified spot+perp position management; health/margin indicators; real-time streaming data. Onboarding/wallet-connect kept straightforward despite the density.",
+            "takeawayForYore": "Reference for organizing high-density financial data without chaos: tabular numerics, long/short color coding, grouped panels, and real-time streaming values. The 'serious venue' restraint (no gradients, no mascots) is exactly the 'premium infra' register to aim for."
+          },
+          {
+            "name": "Jito",
+            "url": "https://www.jito.wtf/ (Labs) / https://www.jito.network/ (staking)",
+            "visualLanguage": "Two faces: jito.network (JitoSOL liquid staking, consumer-clean) and the MEV/Block-Engine infra brand (jito.wtf). The standout is the Jito Explorer MEV dashboard - a real-time window into Solana MEV flows (bundles, tips, validator take-rates) for builders/researchers.",
+            "colorAndType": "Dark-mode UI kit with tokenized colors and slot-based spacing (Figma -> Storybook for front-end parity). Data-forward typography; donut charts and live tip/bundle feeds. Accent reserved for live dollar-flow highlights.",
+            "motion": "Live-updating bundles, validator tips, and donut charts giving a real-time view of dollar flows. Real-time data viz is the core experience - numbers move as MEV happens.",
+            "standoutTechniques": "Tokenized design system exported to Storybook (design-eng parity); donut/flow charts for MEV economics; real-time bundle/tip feed; responsive desktop/tablet/mobile dashboard. Makes an invisible mechanism (MEV) visible and legible.",
+            "takeawayForYore": "Single best analog conceptually: a dashboard that 'makes an invisible on-chain mechanism visible and verifiable in real time.' Borrow the tokenized-design-system + Storybook parity workflow, donut/flow charts for economics, and the live-feed-of-events pattern for showing historical-state proofs landing."
+          },
+          {
+            "name": "Backpack",
+            "url": "https://backpack.exchange/",
+            "visualLanguage": "Unified wallet + exchange + NFT (xNFT) in one product. Distinct, ownable brand that deliberately avoids Solana purple - leans into its own warm/red-orange identity, which makes it read as a product brand rather than 'generic Solana dapp.' Clean exchange surface (markets, trade, portfolio).",
+            "colorAndType": "Warm red/orange brand accent on dark surfaces; strong use of mono/tabular numerics in trading and balance views. Confident, modern sans for product chrome. Color restraint outside the accent keeps trading data legible.",
+            "motion": "Standard exchange-grade live price/balance updates, smooth wallet flows across Solana/Ethereum/BTC (multichain), polished onboarding. Cross-chain account abstraction handled invisibly.",
+            "standoutTechniques": "One identity spanning wallet + CEX + NFTs; ownable non-purple palette; multichain in a single account; xNFT executable-NFT concept. Brand consistency across wallet and exchange surfaces is the craft signal.",
+            "takeawayForYore": "Proof that picking a non-purple ownable accent reads as MORE premium and less 'me-too Solana.' For a coprocessor, having one distinctive accent + dark neutral base + mono numerics is the formula. Backpack shows brand cohesion across multiple surfaces is what separates a product from a dapp."
+          },
+          {
+            "name": "Pyth Network",
+            "url": "https://www.pyth.network/",
+            "visualLanguage": "Premium financial-data infrastructure. Dark, institutional, minimal - feels like a professional trading terminal/data vendor. Categorized like a real market-data product (Crypto / Equity / FX / Commodities). Institutional testimonials (Jane Street, Wintermute, Revolut) anchor credibility.",
+            "colorAndType": "Dark backgrounds with bright accent colors used specifically to highlight data; minimal palette. Clean sans with prominent live metric displays. Code samples (Solidity) rendered as design elements.",
+            "motion": "Real-time/interactive data viz: live price-feed counts and timeline graphs (3,059+ feeds, 138+ publishers, 114 chains, 711 apps) animating ecosystem growth. Data movement = the credibility signal.",
+            "standoutTechniques": "Live metric dashboards with timeline graphs; market-data categorical taxonomy mirroring pro terminals; 'pure market data straight from the source' positioning; inline code samples; institutional logo/testimonial anchoring.",
+            "takeawayForYore": "Closest peer for 'verifiable data straight from the source.' Borrow: dark institutional minimalism, accent-color-only-on-data, live animated metrics with timeline graphs, market-data categorical organization, and code samples as proof-of-realness. This register reads 'infra' not 'web3.'"
+          },
+          {
+            "name": "Magic Eden",
+            "url": "https://magiceden.io/",
+            "visualLanguage": "Consumer NFT marketplace, multichain (Solana/EVM/BTC). Faster, cleaner collections UI with streamlined stats, advanced filters, enhanced analytics, and a real-time activity window. More mainstream/consumer-friendly than Tensor's pro-terminal density.",
+            "colorAndType": "Brand built on a playful magenta/pink accent; dark and light surfaces. Friendly rounded sans, large NFT imagery driving the visual field. Color used sparingly for actions amid image-heavy grids.",
+            "motion": "Real-time activity feed, trait/rarity sorting, bulk listings, hover states on cards. Maintains a scalable design system for feature breadth across products.",
+            "standoutTechniques": "Real-time activity window; advanced trait filters + analytics; efficient trait sorting; bulk listing flows; profile customization (NFT PFP + banner). Design system built for scale across many product surfaces.",
+            "takeawayForYore": "Less relevant register (consumer NFT vs infra) but useful for: real-time activity feeds, robust filter/sort UI for large datasets, and disciplined design-system scaling. The image-forward, magenta-accent consumer vibe is what to AVOID for a verifiable infra tool."
+          },
+          {
+            "name": "Squads",
+            "url": "https://squads.so/ (multisig app: app.squads.so)",
+            "visualLanguage": "Leading Solana multisig securing ~$10B; positioned for the largest teams/protocols. v4 redesign deliberately moved CLOSER to traditional fintech and enterprise SaaS - light mode, new palette, revised components, dozens of QoL fixes. Slick, calm, trust-first.",
+            "colorAndType": "Light-mode-forward (notable in a dark-dominated ecosystem) with a refreshed neutral palette and a focused accent; enterprise-SaaS clean. Readable sans, clear hierarchy, generous spacing for treasury/approval flows. Tabular numerics for asset balances.",
+            "motion": "Restrained, productivity-app motion - smooth navigation, clear transaction-review and approval states. Community even debates a minimalist security-first CLI/restricted desktop app to reduce attack surface - security framing shapes the whole UX.",
+            "standoutTechniques": "Fintech/enterprise SaaS aesthetic; light mode as a differentiator; transaction-review and multi-sig approval flows as first-class UI; treasury management dashboards. Trust/security is the design north star, not flash.",
+            "takeawayForYore": "Most relevant tonal model for a 'verifiable' tool where TRUST is the product. Borrow: enterprise-SaaS calm, clear approval/verification state design, optional light mode, generous spacing, and security-as-UX-principle (even minimal/CLI surfaces). This is how you signal seriousness over hype."
+          }
+        ],
+        "patterns": [
+          "Solana brand palette is purple #9945FF -> green #14F195 gradient (official, solana.com/branding). The strongest infra brands (Helius amber, Backpack red-orange, Jupiter jade-green) DELIBERATELY avoid full Solana purple to read as a product, not a generic ecosystem dapp. Use Solana purple sparingly/as a nod, not as your primary identity.",
+          "Dark, near-black base (#0A0A0B / #202020 range) + ONE ownable accent color used almost exclusively on data and primary actions = the default 'premium Solana infra' formula. Color restraint everywhere except the accent is what reads expensive.",
+          "Tabular/monospace numerics for all financial and on-chain figures (prices, balances, PnL, counts). Mono numerics aligned in columns is the single fastest way to make on-chain data feel clean, fast, and trustworthy.",
+          "Real-time, update-in-place data (Tensor, Jito, Drift, Pyth): rows and numbers tick/animate without full page reloads. Live-feed-of-events + animated metric counters make on-chain mechanisms feel tangible and verifiable - directly applicable to showing proofs/derivations landing.",
+          "Wallet-connect as a clean bottom-sheet/modal with a provider grid (Phantom/Backpack/etc. logos), not a clunky redirect. Keep onboarding straightforward even when the app itself is dense (Drift does this).",
+          "One app shell, many products via tabs/left-rail (Jupiter spot/perps/lend, Drift spot+perp, Backpack wallet+CEX+NFT). A single coherent shell with tab routing beats separate pages for a multi-feature infra product.",
+          "Density toggle (Tensor Lite vs Pro): let power users get Bloomberg-terminal density while newcomers get a calm reduced view. Smart way to serve both audiences from one UI.",
+          "Visualize the invisible mechanism: Jupiter's aggregator route lines and Jito's MEV-flow donut/feed charts make hidden on-chain processes legible. For a historical-state coprocessor, visualizing the verification/derivation path is the marquee interaction.",
+          "Tokenized design system exported to Storybook for design-engineering parity (Jito): slot-based spacing + color tokens. This workflow is what keeps dense data UIs consistent at scale.",
+          "Motion-as-system tied to brand voice (Phantom: Framer Motion + Lottie + lerp smooth-scroll from Bakken & Baeck / F37 Foundry type). Motion should express a coherent personality, not be sprinkled decoration.",
+          "Trust chrome: named-customer logo walls + testimonials (Helius: Phantom/Jupiter/Coinbase; Pyth: Jane Street/Wintermute/Revolut), uptime/SOC2 badges, and live network stats. For a verifiable-infra product, surface verifiable trust signals as primary design elements.",
+          "Code/endpoints rendered as first-class visual objects (Helius, Pyth Solidity samples). Showing real code/queries inline signals 'this is real infra builders use,' not a marketing shell."
+        ],
+        "pitfalls": [
+          "Defaulting to the literal Solana purple->green gradient on everything. It instantly reads 'generic Solana ecosystem template' / me-too. The premium brands avoid it; differentiate with an ownable accent.",
+          "Neon purple #9945FF at full saturation across large areas - harsh and dated. If using purple, prefer a softer lavender (Phantom ~#AB9FF2) and limit it to accents.",
+          "Mascots / playful illustration (Jupiter's cat, Magic Eden's playful vibe) on a tool whose value prop is VERIFIABILITY. Cute undercuts credibility for infra; keep it technical.",
+          "Glassmorphism + heavy glow/bloom + floating 3D blobs as the whole aesthetic = generic web3 2021. Use 3D/WebGL only with purpose (Phantom-level craft) or not at all.",
+          "Proportional fonts for numeric/financial data, causing columns to jitter and misalign. Always use tabular/mono figures for on-chain numbers.",
+          "Full-page reloads or spinner-heavy refreshes for live data. Premium dapps update in place; jarring reloads feel slow and cheap.",
+          "Over-dense everything with no calm mode or hierarchy (density for its own sake). Pair density with a Lite/Pro toggle and clear grouping (Tensor/Drift do; bad clones don't).",
+          "Wallet-connect as a clunky multi-step redirect instead of a clean provider-grid modal/bottom-sheet.",
+          "Crowding the UI with token logos and rainbow accents so nothing reads as the primary action. Reserve color for data + the one key action.",
+          "Marketing-only credibility (vague 'fast & secure' copy) with no code samples, no live stats, no named customers - reads as vaporware for an infra product."
+        ]
+      },
+      {
+        "category": "Award-winning / experimental design",
+        "sites": [
+          {
+            "name": "Stefan Vitasović Portfolio 2025",
+            "url": "https://tympanus.net/codrops/2025/03/05/case-study-stefan-vitasovic-portfolio-2025/",
+            "visualLanguage": "Dark, cinematic, lo-fi. WebGL video grid with an LED-overlay + noise-grain fragment shader unifying every clip, giving a glitchy CRT/projector feel.",
+            "colorAndType": "No published hex codes; dark near-black base. Type is animated character-by-character (each glyph assembles, offset by index) with masked x-axis 'glass parallax' reveals.",
+            "motion": "Custom virtual-scroll controller (Lethargy + Virtual Scroll, NOT Lenis) drives a splash-screen-by-scroll homepage and infinite-scroll About page where only visible sections are transformed in the frame loop. Page transitions via AnimatePresence with onAnimationStart/Complete hooks gating the scroll controller.",
+            "standoutTechniques": "WebGL plane grid rendering HD video at 60fps; vertex shader displaces verts along x with noise + a curved 'bend to modelPosition' for fake depth. Single shared THREE.PlaneGeometry(w,h,1,128) across all meshes; unused meshes skipped. Framer Motion's imperative animate() drives shader uniforms.",
+            "takeawayForYore": "The shared-geometry + skip-invisible-meshes pattern is exactly how a state-history coprocessor viz should scale: one reused mesh/material, only render the timeline slice in view. The LED/grain shader overlay is a cheap way to make WebGL feel like a unified 'instrument readout' rather than disjoint panels. Borrow: kill WebGL entirely on mobile (they swap to native <video>) to protect credibility on weak devices."
+          },
+          {
+            "name": "FUTURE THREE® (studio self-redesign)",
+            "url": "https://tympanus.net/codrops/2025/10/23/a-studio-reborn-future-three-and-the-art-of-self-redesign/",
+            "visualLanguage": "Restrained, editorial, dark with a single hot-red accent. Proves you can win awards without a WebGL hero — pure GSAP + DOM.",
+            "colorAndType": "Red accent surfaces only as a text-shadow: rgba(255, 50, 50, 0.8). Hover splits headings into chars via GSAP SplitText (propIndex:true → per-char --char CSS var); chars stagger up with delay calc((var(--char) - 1) * 0.024s), and the delay is skipped on hover-out so it snaps back instantly.",
+            "motion": "Lenis smooth scroll + GSAP ScrollTrigger parallax (yPercent:-10, images scaled 1.1x inside overflow-hidden to avoid gaps). Lottie loader plays with scroll disabled; on complete, gsap.to('.loader',{autoAlpha:0}) and an is-ready class fires clip-path reveals with staggered masks. Project hover: secondary image fades in with translateY(10px), 0.5s/0.1s-delay in, faster 0.4s out.",
+            "standoutTechniques": "Per-character CSS-variable staggering driven from SplitText; asymmetric in/out timing (slow reveal, snappy exit) as a felt-quality trick; clip-path mask reveals tied to a readiness class.",
+            "takeawayForYore": "This is the highest-credibility template for a verifiable/serious tool: mono-accent palette, no gratuitous 3D, all distinctiveness from micro-timing and SplitText. The asymmetric-timing rule (reveal slowly, dismiss fast) and per-char --char stagger are directly portable to Yore's headers and proof/verification status reveals without any GPU cost."
+          },
+          {
+            "name": "Robin Payot — Issey Miyake 'Le sel d'Issey' / McDonald's CH",
+            "url": "https://tympanus.net/codrops/2025/06/12/developer-spotlight-robin-payot/",
+            "visualLanguage": "High-craft immersive 3D; tactile, material-driven (salt crystals, refraction, risograph grain light). FWA/Awwwards SOTD level.",
+            "colorAndType": "Not specified; material/light is the identity rather than palette.",
+            "motion": "Interactive crystal-creation experience; the McDonald's piece is a full WebGPU game with day/night and weather cycles (also seen in his Wind Waker.js recreation with LOD logic).",
+            "standoutTechniques": "Refraction shader for the salt crystal (the core technical challenge). TSL (Three.js Shader Language) writes shaders in JS that auto-compile to WebGPU with WebGL fallback — measurably faster on Android. BatchedMesh merges all obstacles into ONE mesh for perf. R3F used to scaffold quickly. He also published a Codrops 'risograph grain light' shader tutorial.",
+            "takeawayForYore": "TSL is the 2025/2026 move: one JS shader codebase → WebGPU (≈95% of users) with automatic WebGL2 fallback for the rest, so a fancy hero doesn't sacrifice reach. BatchedMesh is the right tool if Yore ever renders many history nodes/blocks at once. Refraction/grain-light shaders are how to make a single hero object feel 'precious' — useful if Yore wants one signature artifact (e.g. a verifiable state 'crystal') rather than a busy scene."
+          },
+          {
+            "name": "Awwwards WebGL Shaders + Code collection",
+            "url": "https://www.awwwards.com/awwwards/collections/webgl-shaders-code/",
+            "visualLanguage": "Survey of the current SOTD shader aesthetic: fullscreen GLSL fragment-shader heroes, noise/flow fields, displacement on hover, custom WebGL cursors.",
+            "colorAndType": "Varies; dominant pattern is dark canvas + a single luminous gradient driven by a shader.",
+            "motion": "Cursor-reactive displacement, hold-to-interact, sound-design pairing; mouse-position fed as a uniform into the fragment shader.",
+            "standoutTechniques": "Fragment-shader heroes (GLSL noise/FBM gradients), WebGL custom cursors (a shader-driven blob/trail rather than a DOM element), texture-displacement-on-hover for images. Common libs: three.js / React Three Fiber for scenes, or OGL for tiny lightweight shader-only heroes.",
+            "takeawayForYore": "For a coprocessor brand, a single fullscreen FBM/flow-field shader hero reads as 'computation happening', which is on-theme — but feed it real signal (e.g. verification activity / block height) so it's data-driven, not decorative. Prefer OGL over full three.js if the hero is the only WebGL on the page (smaller bundle = better credibility/perf)."
+          },
+          {
+            "name": "Codrops scroll-driven storytelling tutorials (2025–2026)",
+            "url": "https://tympanus.net/codrops/tag/scroll/",
+            "visualLanguage": "The reference catalog for scroll choreography: layered zoom, sticky animated grids, curved MotionPath reveals, dual-wave kinetic text, seamless infinite scroll.",
+            "colorAndType": "Technique-focused; kinetic typography is the recurring star (waterfall reveals, scramble, wave).",
+            "motion": "GSAP ScrollTrigger + ScrollSmoother for GPU-accelerated, scroll-synced animation; Lenis paired with GSAP by adding lenis.raf to the GSAP ticker so both share one rAF loop. CSS Scroll-Driven Animations API now does many text reveals with zero JS.",
+            "standoutTechniques": "Layered zoom scroll (ScrollSmoother + transform math), sticky grid scroll, MotionPath curved-path reveals, infinite scroll via Lenis+GSAP, SplitText scramble/wave kinetic type. Note: Webflow bought GSAP in early 2026 — SplitText/ScrollTrigger are now 100% free for commercial use.",
+            "takeawayForYore": "Scroll-as-narration suits explaining a verifiable historical-state pipeline step by step (commitment → proof → verification). Use the lenis.raf-into-GSAP-ticker pattern so animation never desyncs from scroll. BUT guard everything behind prefers-reduced-motion and consider the pure-CSS Scroll-Driven Animations API for text reveals to avoid JS cost. Avoid scroll-hijacking on dense/technical content — it tanks credibility for a tool devs need to read carefully."
+          },
+          {
+            "name": "Brutalist / terminal / monospace aesthetic (Craigslist, Bloomberg Businessweek, neubrutalism)",
+            "url": "https://neubrutalism.com/",
+            "visualLanguage": "Raw, grid-heavy, high-contrast; rejects polish. Two flavors: pure-brutalist (system fonts, visible structure) and 2025 'neubrutalism' (hard shadows, thick black borders, flat saturated blocks, sticker/emoji accents).",
+            "colorAndType": "Monospace is the signature: JetBrains Mono, Courier, IBM Plex Mono, 'mechanical' faces. Neubrutalism adds high-saturation fills + pure-black 1–4px borders and offset box-shadows (e.g. 4px 4px 0 #000).",
+            "motion": "Often minimal/instant by design; when present, abrupt non-eased transitions reinforce the raw feel. Cyberpunk variant layers glitch art + neon on dark.",
+            "standoutTechniques": "Monospace type overload, visible grids and borders, hard offset shadows, no border-radius (or aggressively rounded in the kawaii variant), terminal/console framing.",
+            "takeawayForYore": "This is arguably the strongest direction for a verifiable-state coprocessor: a terminal/monospace shell reads as 'inspectable, deterministic, no marketing fluff' — which IS the credibility pitch. Use IBM Plex Mono or JetBrains Mono for hashes/proofs/addresses (mono also makes hex/state diffs legible). Borrow the structural honesty (visible grid, real data tables) but skip the kawaii/emoji neubrutalism — it would undercut a security/verification tool."
+          },
+          {
+            "name": "Lusion / Active Theory / Resn (FWA Hall of Fame agencies)",
+            "url": "https://lusion.co/",
+            "visualLanguage": "The high end of real-time 3D web: physically-lit immersive scenes, particle systems, GPGPU simulation, sound-reactive worlds. Active Theory v6 and Lusion Labs are the benchmark SOTD/FWA cases.",
+            "colorAndType": "Studio-dependent; typically dark, cinematic, with restrained UI type over a dominant 3D stage.",
+            "motion": "Real-time physics, particle/flow simulation, camera choreography, pointer/sound reactivity; everything runs in the GPU at locked 60fps.",
+            "standoutTechniques": "GPGPU particle simulation in shaders, post-processing stacks (bloom, DOF, chromatic aberration), instanced/batched geometry, and increasingly WebGPU+TSL for 60fps at 100k+ objects (benchmarks cite 15k@15fps WebGL → 200k@60fps WebGPU).",
+            "takeawayForYore": "Aspirational ceiling, but a trap if over-applied: these studios earn the GPU budget because the experience IS the product. For a coprocessor, lift ONE technique (e.g. an instanced particle field representing state transitions or a GPGPU flow for verification throughput) rather than a full Active-Theory world. The credibility risk is real — a heavy 3D scene on a security/infra tool can read as style-over-substance, so make any 3D map to actual on-chain/state data."
+          }
+        ],
+        "patterns": [
+          "Single signature element beats a busy scene: top SOTD work commits to ONE hero idea (one refraction crystal, one FBM shader field, one kinetic headline) and keeps everything else quiet — high impact, controllable perf budget.",
+          "Make the spectacle data-driven, not decorative: feed real signal (mouse, scroll, block height, verification activity) into shader uniforms / animations so a coprocessor's flourish reads as 'computation', reinforcing rather than undermining credibility.",
+          "TSL (Three.js Shader Language) is the 2025/2026 default for new WebGL/WebGPU work: write shaders once in JS, auto-compile to WebGPU (~95% coverage) with automatic WebGL2 fallback; big perf wins on Android and dense scenes.",
+          "Reuse one geometry/material and only render what's visible: shared THREE.PlaneGeometry across all meshes, skip off-screen meshes, BatchedMesh to merge many objects into one draw call — the perf backbone behind award scenes.",
+          "Micro-timing is the cheapest distinctiveness: per-character SplitText staggering via CSS variables (--char) and asymmetric in/out durations (slow reveal, snappy dismiss) make plain DOM feel premium with zero GPU cost.",
+          "Bind smooth scroll correctly: drive Lenis from GSAP's ticker (lenis.raf in gsap.ticker) so scroll and animation share one rAF loop and never desync; gate all of it behind prefers-reduced-motion.",
+          "Monospace = trust signal: IBM Plex Mono / JetBrains Mono for hashes, proofs, addresses and state diffs both looks intentional (terminal/brutalist) and improves legibility of technical data — ideal fit for a verifiable-state tool.",
+          "Tier your fidelity: full WebGL/WebGPU hero on capable desktops, graceful fallback (native video, static gradient, or pure-CSS) on mobile/low-end and reduced-motion — protects both performance and perceived seriousness.",
+          "Lightweight lib for lightweight needs: use OGL (or raw WebGL) for a shader-only hero instead of full three.js/R3F to cut bundle size when you don't need a scene graph.",
+          "Prefer the CSS Scroll-Driven Animations API for simple text/reveal effects to drop JS entirely; reserve GSAP ScrollTrigger for choreography that genuinely needs it."
+        ],
+        "pitfalls": [
+          "Scroll-hijacking on dense technical content: a verification/infra tool is read carefully — overriding native scroll frustrates power users and reads as style-over-substance. If you smooth-scroll, keep it subtle and respect reduced-motion.",
+          "3D that maps to nothing: a gratuitous Active-Theory-style scene on a security/coprocessor product damages credibility. Every 3D/shader element should encode real data or be cut.",
+          "Ignoring prefers-reduced-motion / accessibility: kinetic type, parallax, and smooth scroll without a reduced-motion path is an instant trust and a11y failure for a serious tool.",
+          "Shipping a giant three.js bundle for one effect: pulling in full three.js + R3F + postprocessing for a single hero blows TTI; use OGL or TSL-targeted minimal scenes.",
+          "Generic 'Awwwards starter pack' clichés: hot-pink gradient blob + Lenis + a noisy grain overlay + a magnetic custom cursor now reads as template, not craft — pick a coherent thesis (e.g. terminal/verifiable) instead.",
+          "No WebGL fallback / no perf tiering: WebGPU is ~95% coverage and WebGL fails on some mobile/old devices — without graceful degradation you get a blank or janky hero exactly where credibility matters most.",
+          "Custom cursors that hurt usability: a slow lerp'd WebGL cursor on a tool with lots of clickable data is annoying and accessibility-hostile; if used, keep latency near-zero and never hide the real pointer on interactive controls.",
+          "Grain/noise overlays at full resolution every frame: animated full-screen noise is a real GPU/battery cost — bake it to a texture or a low-cost shader, don't recompute per-pixel per-frame.",
+          "Neubrutalism's kawaii/emoji/sticker direction on an infra product: the hard-border aesthetic can work, but emoji and pastel sticker accents undercut a verification/security positioning.",
+          "Kinetic typography that delays reading: scramble/wave reveals on critical technical copy (hashes, statuses, docs) slow comprehension — animate marketing headers, not load-bearing data."
+        ]
+      },
+      {
+        "category": "Temporal / archival / proof aesthetic",
+        "sites": [
+          {
+            "name": "Symphony of Blockchains (IOHK / Scott Darby + Kuva Studio)",
+            "url": "https://symphony.iohk.io/ (case study: https://scottdarby.com/projects/symphony , https://medium.com/@wearekuvastudio/symphony-of-blockchains-78394b37bbba )",
+            "visualLanguage": "Dark void-black space with glowing crystalline forms. The entire Bitcoin chain is rendered as immutable 'crystals' connected in 3D space, arranged in a spiral that traces backward through time — each full rotation = one day of history. Feels less like a dashboard and more like an observatory of frozen, persistent data.",
+            "colorAndType": "Deep near-black background; blocks glow with value-mapped hues (cool-to-warm by transaction value), bright emissive surfaces against the dark. Type is secondary/UI-level; the visual is carried by light and geometry, not text.",
+            "motion": "Pure scroll = travel through time (scroll up/down to move forward/back along the spiral). Hover reveals individual nodes; clicking a block 'opens' its own Merkle tree with transaction detail, then click-away to exit. Realtime generated audio: ambient mining-intensity drone layered with notes mapped from each transaction's position in the Merkle tree (Aeolian mode, quantized 32nd notes). WebVR version exists.",
+            "standoutTechniques": "THREE.js + React. Data-driven encoding: block SIZE = total transaction value, COLOR = value, ORIENTATION = data properties; transactions = hexagonal crystals where height = value and surface brightness = unspent/spent ratio. Spiral-through-time as the core navigation metaphor. Sonification of the Merkle tree.",
+            "takeawayForYore": "This is the single closest spiritual reference for Yore. Borrow the 'spiral of immutable crystals = navigable history' idea for a hero: a 3D ribbon/spiral of Solana slots receding into deep space, scroll = travel back in time toward genesis. Encode real proof data into geometry (a slot's crystal grows/glows by the state it commits). The signature interaction: click a historical slot and watch its Merkle/SPV inclusion proof unfold as a literal branching crystal lattice lighting up from leaf to root — the proof IS the art. Avoid copying the audio gimmick wholesale; a subtle proof 'chime' on verification is enough."
+          },
+          {
+            "name": "Histography (Matan Stauber, Bezalel Academy)",
+            "url": "https://histography.io/",
+            "visualLanguage": "Austere, monochrome 'every event is a dot' field. 14 billion years of history rendered as thousands of black dots on a horizontal time axis, stacked vertically when simultaneous. Reads as a vast ledger or census of time — minimal, archival, slightly austere.",
+            "colorAndType": "Black dots on light ground (and an inverse spiral view); restrained, near-grayscale. Lets density and rhythm of the dots do the work rather than color.",
+            "motion": "Zoom in/out across eras (Middle Ages → Information Age); filter by category (wars, art, disasters, riots). A spiral view you descend by scrolling, zooming down to the Big Bang. Self-updates daily from Wikipedia.",
+            "standoutTechniques": "Dots-as-data-points as a unifying visual primitive; one mark = one verifiable record. Category filtering over a continuous timeline. Spiral-descent navigation as an alternate to the linear axis.",
+            "takeawayForYore": "The 'one dot = one record' primitive is perfect for a proof coprocessor: render each historical Solana slot/account-state-commitment as a single mark, and let density visualize chain history at a glance. Loading state idea: dots streaming in chronologically as the index/proof set builds. Hero: a dense field of slot-dots where hovering surfaces the proof for that exact moment. The restraint (mono palette, marks not gradients) is how you avoid generic crypto neon."
+          },
+          {
+            "name": "Deep Time Explorer + Dean Farr 'Deep Time' + ChronoZoom",
+            "url": "https://deeptimeexplorer.earth/ , https://www.deanfarr.com/deep-time/",
+            "visualLanguage": "Geologic deep-time as interface: stratigraphic columns and zoomable 4.54-billion-year scales. Dean Farr's piece is a famously long pixel-scaled scroll conveying the sheer depth of time; Deep Time Explorer is a zoomable fossil/era timeline. Vibe: sedimentary, layered, oldest-at-bottom.",
+            "colorAndType": "Earth-toned strata bands — ochres, rust/oxide reds, slate grays, fossil creams — each geologic period a distinct band of color (the standard ICS stratigraphic palette). Quiet, scientific typography.",
+            "motion": "Scroll = descend through layers / back through time (superposition: newest on top, oldest below). Progressive zoom from billion-year overview down to a single era. Long-scroll as an emotional device to make time feel physically deep.",
+            "standoutTechniques": "Stratigraphic column as a literal scrollable axis; color-coded temporal bands; scale-jumping zoom. Canvas/WebGL for the long continuous surface.",
+            "takeawayForYore": "Reframe 'reading the past' as digging down through strata. Vertical hero where scrolling DOWN goes BACK in time through layered slots — recent state at the surface, genesis at bedrock, with a visible 'you are reading at depth N' marker. Color-band epochs of Solana history (epochs literally are a unit here). Loading state: a core sample drilling down, layers filling in. This gives Yore a tactile 'archaeology of state' identity that no crypto competitor uses."
+          },
+          {
+            "name": "Built for Archives (Maxence Riffault)",
+            "url": "https://www.awwwards.com/sites/built-for-archives",
+            "visualLanguage": "Stark institutional black-and-white, content-over-decoration. Reads like a museum wall label or a records office — formal, systematic, restrained.",
+            "colorAndType": "Pure #000000 / #FFFFFF, high-contrast. Clean systematic typography; the restraint itself signals 'archive/institution'.",
+            "motion": "Purposeful microinteractions only — custom loaders, deliberate page transitions, considered hover and 404 states. Motion is reserved, never decorative.",
+            "standoutTechniques": "Discipline as a technique: systematic grid, museum-grade typography, motion budget spent only on meaningful moments. Custom loading animation as part of the identity.",
+            "takeawayForYore": "The counterweight to the flashy 3D references. Yore's credibility (it makes cryptographic claims) benefits from this institutional restraint: a mono/serif black-on-paper documentary layer for the actual proof/receipt UI, so verification feels official rather than hype. Use this register for the 'certificate of proof' view; reserve WebGL spectacle for the hero only."
+          },
+          {
+            "name": "The Pudding (D3.js + Svelte scrollytelling)",
+            "url": "https://pudding.cool/",
+            "visualLanguage": "Editorial data-journalism: visual essays where graphics transform as you scroll. Authoritative, sourced, narrative — the opposite of a static landing page.",
+            "colorAndType": "Editorial type-forward layouts, serif/display headlines mixed with functional sans/mono for data; clean charts with intentional accent colors.",
+            "motion": "Scrollytelling: the graphic animates/changes state in lockstep with scroll position without hijacking native scroll. Used to walk a reader through a complex argument step by step.",
+            "standoutTechniques": "D3.js + Svelte; documented responsive scrollytelling patterns and six-library implementation guide on their process blog. State-linked-to-scroll storytelling.",
+            "takeawayForYore": "Use scrollytelling to TEACH the proof. A signature section where scrolling steps through 'here's a past Solana account state → here's the slot it lived in → here's the Merkle path → here's the root the validators signed → verified.' Each scroll beat lights one step of the proof chain. This makes 'Solana reads its own past, proven' legible to non-cryptographers — a differentiator vs. opaque crypto sites."
+          },
+          {
+            "name": "Wax-seal / guilloche security-document motif (banknote engraving aesthetic)",
+            "url": "https://benhodosi.com/ (guilloche/security designer reference)",
+            "visualLanguage": "Certificate-of-authenticity language: intricate guilloche line-work (interwoven thin geometric lines from banknote security), embossed seals, watermarks. Conveys officialness, anti-counterfeit, 'this is verified and cannot be forged.'",
+            "colorAndType": "Engraving palette: single-ink intaglio greens, oxide reds, deep blues on cream/paper; ornamental serif/engraved lettering; fine hairline rules.",
+            "motion": "A seal can 'press'/emboss on successful verification; guilloche lines can be drawn live (animated stroke) or react to a hash. A stamp that thuds down to mark a record as proven.",
+            "standoutTechniques": "Guilloche is mathematically generated interwoven curves — perfectly programmable in SVG/canvas and can be SEEDED BY A HASH so every proof produces a unique guilloche fingerprint. Embossed/letterpress texture via subtle inner-shadow + grain.",
+            "takeawayForYore": "The 'seal of proof' is Yore's signature flourish. Generate a unique guilloche rosette deterministically from each Merkle root / proof hash — every verified historical state gets its own visual 'wax seal' fingerprint. Loading state: the seal draws itself line-by-line while the proof verifies, then 'stamps' down with a satisfying settle when valid (red 'tamper'/invalid state if it fails, echoing Merkle-tamper visualizers). This is concrete, ownable, and screams 'verifiable authenticity' without generic crypto tropes."
+          },
+          {
+            "name": "Interactive Merkle-tree / proof visualizers (PurrProof, Sendot, DigiCert MTC Playground)",
+            "url": "https://github.com/PurrProof/merkle-proof-vis , https://dev.to/sendotltd/building-an-interactive-merkle-tree-visualizer-one-byte-changes-the-whole-root-changes-in-olog-h9m , https://www.digicert.com/blog/digicert-mtc-playground",
+            "visualLanguage": "The Merkle tree itself as the visual: node-link diagrams, sunburst and treemap renderings of the hierarchy, with a highlighted proof PATH from leaf up to root. Clean, technical, but inherently elegant.",
+            "colorAndType": "Functional technical palette; the load-bearing color move is the 'tamper' state — edit one leaf and that leaf, its parent chain, and the root all flash RED as the root hash changes (O(log n) ripple).",
+            "motion": "Live ripple: change a byte, watch the change propagate up the tree to the root. Proof explorer animates the inclusion path leaf→interior nodes→root. Sunburst/treemap let you zoom the hierarchy.",
+            "standoutTechniques": "Highlighted proof path as a glowing branch; the tamper-turns-red interaction is the most visceral way to SHOW immutability. Sunburst view (DigiCert) renders the whole tree as a radial archive.",
+            "takeawayForYore": "Make the Merkle path the hero animation, not a diagram buried in docs. Signature interaction: user picks a past state, the inclusion proof lights up as a branch climbing from leaf to a signed root — green/gold when it reconciles to the validator-signed root. Build in the inverse 'tamper' demo (flip a byte, whole branch goes red) so visitors FEEL why Yore's claims are trustworthy. The radial/sunburst is a great alternative hero geometry to the spiral."
+          }
+        ],
+        "patterns": [
+          "Time-as-axis is the through-line: spiral (Symphony), vertical strata descent (Deep Time), horizontal dot-field (Histography), scroll-linked steps (Pudding). Pick ONE primary temporal metaphor and make scroll = travel through time. For Yore, vertical 'dig down to genesis' (strata) or receding spiral of slots are the two strongest; they map cleanly onto Solana's slot/epoch units.",
+          "One mark = one verifiable record. Whether crystal (Symphony), dot (Histography), or stratum band, the best references give each historical unit a single, data-driven visual primitive. Encode REAL proof data into the mark's size/glow/color rather than decorating — it reads as substance, not crypto-neon.",
+          "The proof path is the money shot. Across Merkle visualizers and Symphony, the recurring elegant moment is a path lighting up leaf→root. Treat Yore's SPV/inclusion proof as the signature interaction, animated and central, not a docs diagram.",
+          "Show immutability by showing tampering. The 'flip one byte → whole branch turns red, root changes' interaction is the most persuasive, visceral way to communicate why a proof matters. A live tamper toggle builds trust faster than any copy.",
+          "Two registers, deliberately split: WebGL/3D spectacle for the HERO (Symphony, Deep Time) vs. institutional black-on-paper restraint for the actual PROOF/RECEIPT UI (Built for Archives). Yore makes real cryptographic claims, so the verification surface should feel like a museum label / security document, not a hype page.",
+          "Deterministic generative seals from hashes. Guilloche rosettes and similar security-engraving patterns are math-generated and can be seeded by a proof's hash, giving every verified state a unique, ownable 'wax seal' fingerprint — bridging 'cryptographic proof' and 'archival authenticity' in one mark.",
+          "Loading states should narrate the proof, not spin. Best-in-class options here: a seal/guilloche drawing itself line-by-line; a core-sample drilling through strata; dots streaming in chronologically; a Merkle branch climbing leaf→root. The wait becomes the explanation.",
+          "Color from the source domain, not from crypto. Stratigraphic earth-tones (oxide red, ochre, slate, fossil cream), intaglio banknote inks (single-ink green/blue on cream), or phosphor-terminal green+amber on void-black — all read more 'archive/proof' than the default purple/cyan crypto gradient.",
+          "Monospace as archival texture, not just code. Departure Mono (indie, pixel-retro), IBM Plex Mono (clean institutional-tech), JetBrains Mono, or 3270 (IBM-terminal era) give a records/terminal feel; pair with a serif or museum-grade sans for the editorial/certificate layer to avoid the one-note 'hacker' cliché."
+        ],
+        "pitfalls": [
+          "Default crypto palette (electric purple→cyan gradient, glowing grids, neon glassmorphism) — it erases the time/archive identity and makes Yore look like every other L2/DeFi launch. The whole point is to NOT look generic-crypto.",
+          "Decorative 3D with no data meaning. Symphony works because geometry encodes real transaction values; an abstract spinning blob of polygons that ignores the underlying proof data reads as empty spectacle and undercuts a 'verifiable' product.",
+          "Skeuomorphic kitsch: a literal photorealistic dripping-wax seal, parchment textures, faux-leather ledgers, or quill-pen icons. Abstract the motif (generative guilloche, embossed monochrome stamp) rather than cosplaying a medieval scribe.",
+          "Scroll-hijacking. Scrollytelling and spiral-scroll are powerful but break trust the moment they fight the user's native scroll, lag, or trap the page. Keep scroll feeling 1:1 and let people leave.",
+          "Over-sonification. Symphony's generated audio is novel but easily becomes annoying/auto-play hostile; if used at all, make it a single opt-in proof chime, never an ambient drone on load.",
+          "Mistaking a Merkle-tree diagram for an explanation. A static node-link graphic in the docs is not the same as an animated leaf→root proof path the user triggers; the inert version is forgettable. Make it interactive and central.",
+          "CRT/scanline overload. The terminal-archive look (phosphor green, scanlines) is great in moderation but tips into Y2K costume fast; use it as accent/texture and pair with restraint, or it reads as gimmick rather than 'verifiable historical-state coprocessor'.",
+          "Faux-official without the real receipt. If you lean into certificate/seal/security-document language, the actual proof must be inspectable (real root, real path, verify button). Authenticity theater around an unverifiable claim is worse than plain design for a product whose whole pitch is cryptographic proof."
+        ]
+      }
+    ],
+    "direction": {
+      "concept": "THE CORE SAMPLE. Yore is positioned as a deep-time drilling instrument for Solana's past — an \"archaeology of state.\" The whole site is built around one governing metaphor: Solana's history is a vertical strata column (genesis at bedrock, the current slot at the surface), and Yore is the instrument that drills down to any prior slot, extracts a single account's state, and returns it sealed with a tamper-evident proof. This fuses three of the research's strongest, least-generic veins: the stratigraphic \"dig down through time\" axis (Deep Time), \"one mark = one verifiable record\" (Histography dots / Symphony crystals → here, one slot = one stratum line), and the \"seal of proof\" — a guilloche rosette deterministically generated from each Merkle root so every verified historical fact gets a unique, un-forgeable wax-seal fingerprint. Time is never measured in clock-time; it is measured in SLOTS and EPOCHS, Solana's own native unit of time, which is both technically honest and ownable. The emotional register is a field instrument / scientific records office, not a crypto launch: deliberate, archival, exact. Tagline lineage in the \"declarative truth\" pattern: \"Prove what happened.\" / \"Read the past. Prove it on-chain.\" The verification asymmetry from the whitepaper (expensive to produce, one cheap check to verify) becomes the central narrative beat — the drill works hard; the seal verifies instantly.",
+      "colorSystem": [
+        "Bedrock #0B0E0C — near-black base with a faint green-black undertone (void of deep time, NOT crypto navy)",
+        "Strata #12161A — elevated surface for cards/panels/the proof drawer",
+        "Hairline #1E2A24 — borders, grid rules, stratum dividers",
+        "Oxide #C24B2C — primary accent (intaglio banknote rust-red); reserved for the seal, the active drill head, and the single primary action",
+        "Patina #3FB28B — verification-success green-jade (a sober oxidized copper green, not Solana #14F195 neon); the 'proof reconciles to root' color",
+        "Amber Phosphor #E8B23A — secondary accent for slot/epoch numerics and in-flight 'proving' state (terminal-readout warmth)",
+        "Fossil #ECE6D6 — archival paper/cream for the certificate/receipt register and high-emphasis display text on dark",
+        "Ash #8A938C — secondary text, secondary numerics, muted labels",
+        "Tamper #E5484D — error/invalid-proof red used ONLY for the tamper demo and failed verification (distinct from oxide accent)",
+        "Slate #6B7A74 — tertiary/disabled, geologic mid-gray",
+        "Stratum bands (epoch coloring, low-saturation ICS-style earth set): Ochre #B98A3E, Rust #9A4E2E, Slate-blue #4E6675, Moss #5E7350, Clay #A86A4A — each Solana epoch range tinted by one band so the history column reads as sedimentary layers"
+      ],
+      "typography": [
+        "Display / headlines: 'Editorial New' (PangramPangram, free for personal/trial; or swap to GT Sekt) — a sharp contemporary serif that signals 'records office / scholarly archive' over generic grotesk. If a fully-free path is required, use 'Fraunces' (Google Fonts) at low optical-size with high contrast for the same archival-serif authority.",
+        "Body / UI sans: 'Geist' (Vercel, OFL, free) — a precise, engineered neutral grotesk for paragraphs, nav, labels and buttons; clean and credible without reading as default Inter.",
+        "Mono (the load-bearing brand voice): 'IBM Plex Mono' (Google Fonts, OFL) for ALL on-chain data — slots, epochs, pubkeys, hashes, Merkle roots, proof bytes, balances. Mono = the verifiable-compute trust signal from the research, and it makes hex/state diffs legible. Use tabular figures everywhere numbers align in columns.",
+        "Optional terminal-archive accent face for the drill HUD only: '3270' or 'Departure Mono' (both free) for the live prover-log readout, to give it an IBM-terminal records texture — used sparingly so it never tips into Y2K costume.",
+        "Roles: Serif = emotional/declarative headlines and the certificate title only. Sans (Geist) = all reading copy, nav, controls. Mono (Plex Mono) = every piece of chain data and the app shell's data tables, plus eyebrow labels rendered as uppercase tracked mono (e.g. 'SLOT 284,119,402 · EPOCH 657')."
+      ],
+      "signatureElements": [
+        "THE PROOF SEAL (the ownable hook): on every successful verification a guilloche rosette is generated deterministically from the proof's Merkle root — same root always yields the same intricate interwoven-curve fingerprint, so each historical fact has a unique, un-forgeable visual identity. It DRAWS itself line-by-line (animated SVG stroke) while the proof verifies, then 'stamps' down with a single weighted settle + a soft oxide-to-patina color shift when valid. Rendered in Oxide on Fossil paper for the certificate; this is Yore's logo-grade signature and appears on receipts, OG images, and the hero. Build with a hash→guilloche SVG generator (sin/cos Lissajous-rose math seeded by root bytes); cache the path, never recompute per frame.",
+        "THE STRATA DRILL (hero + navigation metaphor): the page's vertical axis IS Solana time. Scrolling DOWN drives a drill head deeper into a sedimentary column of slot-strata (recent at surface, genesis at bedrock), with a persistent left-margin depth gauge reading the live 'reading at SLOT N · EPOCH E'. Epoch ranges are tinted as earth-tone bands. The hero query ('balance of W at slot S') literally targets a depth in this column. Implemented as an instanced/Canvas strata field (one reused stratum primitive, only render visible slices — the shared-geometry/skip-invisible pattern from the research) with GSAP/Lenis bound to one rAF loop; degrades to a static layered SVG column on mobile and prefers-reduced-motion.",
+        "THE TAMPER TOGGLE (trust made visceral): a small interactive demo where the visitor flips one byte of a sampled account state and watches the change ripple up the Merkle branch — the leaf, every parent, and the root flash Tamper red in an O(log n) cascade, the seal cracks/refuses to stamp, and the verifier badge reads REJECTED. Flip it back and the branch reconciles to Patina green and the seal stamps. This single interaction proves WHY Yore is trustworthy faster than any copy, and it doubles as the optimistic-path 'challenge & slash' explainer.",
+        "THE PROOF LEDGER FEED (live credibility): a real-time, update-in-place ledger of historical-state queries landing — each row a mono line (query type · target slot · prover · settle path ZK/optimistic · latency · a tiny seal glyph), animating in chronologically like a records office logbook, never full-reload. Surfaces real network metrics (states proven, slot-ranges verified, median verify cost = ONE proof check) as the quantified-credibility dashboard the research prescribes — the verifiable answer to 'is this real infra.'"
+      ],
+      "landingSections": [
+        "1. HERO — 'Read the past. Prove it on-chain.' Declarative serif headline over the strata-drill column receding into Bedrock; one precise technical sub-sentence ('A succinct proof your verifier checks in a single call.'). Primary Oxide CTA 'Drill a slot' (opens the live demo), secondary mono 'Read the spec'. A single Proof Seal mid-draw sits at the surface as the ownable visual anchor. Live depth gauge in the left margin from first paint.",
+        "2. THE GAP — 'Solana is blind to its own history.' Three-stat austere statement of the problem (no historical reads in the runtime · history is pruned & centralized · the workaround is trust) rendered as a strata cross-section showing pruned/missing layers — the void Yore fills.",
+        "3. HOW IT WORKS — scrollytelling proof pipeline (Pudding register): each scroll beat lights ONE step of the real flow — Request (query + target slot) → Auction (reverse-Dutch price rising until a prover claims) → Compute (prover reads state against the committed root) → Prove (ZK Groth16 / optimistic+bond) → Verify & Settle (one alt_bn128 check, seal stamps). The Merkle path climbs leaf→root as the money-shot animation; scroll stays 1:1, reduced-motion gives a static stepped diagram.",
+        "4. THE TAMPER TOGGLE — interactive 'why you can trust this' module (signature element 2). Flip a byte, watch the branch and root go red and the seal refuse; restore to reconcile green.",
+        "5. PROOF MODEL — the two settlement paths (ZK / Optimistic / Hybrid default) as a clean engineered token-card split, with the honest trade-off line on each (the whitepaper's verification-asymmetry framing). Mono code/IDL snippet of the verifier call shown as a first-class object.",
+        "6. USE CASES — clean icon grid making the past tangible: airdrop/eligibility snapshots, DeFi historical oracles & TWAP, time-weighted governance/loyalty, on-chain credit, gaming points. Each as 'prove that W held ≥N of MINT at slot S' concrete phrasing.",
+        "7. THE LEDGER / NETWORK — live Proof Ledger feed + quantified-credibility dashboard (states proven, slot-ranges verified, median verify = one proof check, prover/archivist counts). Roles strip (Requestor / Prover / Archivist / Staker) with $YORE collateral & slashing one-liners.",
+        "8. ROADMAP — vertical strata timeline (on-brand): Phase 0 Devnet MVP balance-at-slot → … → Phase 4 open query-type registry, rendered as core-sample depth markers rather than a generic horizontal line.",
+        "9. $YORE / FOOTER — token utility (collateral · fee market · emissions for verified work · governance) in a restrained table; honest-positioning note (genesis trust assumption) as a mark of credibility; spec/docs/devnet CTAs. Footer carries a faint full-width guilloche band."
+      ],
+      "appShell": "\"One coherent terminal-archive shell — 'one shell, many query types via tabs' — that always feels like operating a field instrument, NOT a marketing page. Layout: a slim top bar (Yore wordmark + Proof Seal favicon, network = devnet/mainnet pill, and a clean wallet-connect that opens a provider-grid bottom-sheet with Phantom/Backpack/Solflare); a left rail of query types (Balance at slot [MVP/live], TWAP over range, Holding at snapshot, Eligibility — the latter three shown 'coming' so the taxonomy reads as serious infra); a central QUERY CONSOLE; and a right-side PROOF DRAWER. FLOW, four felt states: (1) COMPOSE — a single dense console card (the Jupiter 'one action card' pattern) with mono inputs: Account (W) pubkey, Target slot (S) with an epoch helper + a 'pick on the strata column' affordance, query type, and a settlement toggle (Optimistic / Instant-ZK) that visibly maps to the reverse-Dutch price. A real verifier-call snippet updates live beside it so it reads as real infra. CTA: 'Submit query'. (2) AUCTING / PROVING — on submit, the right Proof Drawer comes alive as a records logbook: the reverse-Dutch price ticks down-to-claim in Amber, a prover claims, then a live prover-log readout (3270 mono) streams 'reading state @ slot S · building Merkle path · generating Groth16…'. The Merkle branch in the drawer climbs leaf→root in real time — this is the wait-as-explanation. Numbers tick in place, never spin-and-reload. (3) VERIFYING — the on-chain check beat: a single emphasized 'alt_bn128 verify' line resolves, and the Proof Seal begins drawing itself from the root bytes. (4) VERIFIED — the seal stamps with a weighted settle, everything reconciles Oxide→Patina, and the result resolves into a CERTIFICATE register that deliberately switches visual mode to Fossil-paper + serif title (the 'museum label / security document' counter-register from the research): the proven fact stated plainly ('Account W held 1,240.5 MINT at slot 284,119,402'), then the inspectable receipt — committed root, Merkle path (expandable), proof bytes, verifier tx signature (Solscan link), settle path, and prover. A 'Verify yourself' button re-checks client-side and a copy-as-CPI snippet shows how a program consumes the result. Density toggle (Tensor Lite/Pro): Lite gives newcomers the calm certificate + seal; Pro reveals the full raw path/bytes/log columns. Everything mono + tabular; Oxide reserved for the one primary action and the seal; reduced-motion swaps all reveals for instant state changes.\"",
+      "motionLibs": [
+        "Next.js (App Router) + Tailwind CSS (design tokens for the full palette + tabular-nums utilities) + framer-motion as the baseline for state transitions, the seal stamp settle, and reveal choreography (drive shader/SVG uniforms via its imperative animate()).",
+        "GSAP (now fully free post-Webflow 2026) + ScrollTrigger for the How-It-Works scrollytelling and the strata-drill depth choreography; SplitText for per-character --char staggered serif headlines with asymmetric timing (slow reveal ~0.5s, snappy dismiss ~0.2s) — the cheapest distinctiveness, zero GPU.",
+        "Lenis for subtle smooth scroll, bound into GSAP's ticker (lenis.raf in gsap.ticker) so scroll + animation share ONE rAF loop and never desync; keep it gentle (this is technical content read carefully — no scroll-hijacking) and fully gated behind prefers-reduced-motion.",
+        "Strata-drill hero: OGL (or a lightweight Canvas2D layered-strata renderer) rather than full three.js, since it's the only heavy visual — smaller bundle protects TTI/credibility. One reused stratum primitive, render only visible slices; feed REAL signal (scroll depth → slot index, live slot height) into it so it reads as computation, not decoration. Tier fidelity: WebGL/Canvas on desktop, static layered SVG column on mobile/low-end/reduced-motion.",
+        "Proof Seal: pure SVG + a small deterministic guilloche generator (Lissajous/epicycloid rose math seeded by Merkle-root bytes); animate the self-drawing with stroke-dashoffset (CSS/framer) and cache the computed path — never recompute per frame. Renders crisp at any size for OG images and the certificate.",
+        "Tamper toggle + Merkle path: SVG node-link tree with a small JS hash util (keccak/sha256 via @noble/hashes) to actually re-derive the branch on byte-flip so the red ripple and root change are REAL, not faked — authenticity matters for a proof product.",
+        "Live Proof Ledger: an in-place virtualized list (update rows without reload), animated metric counters via framer-motion's useMotionValue/animate; tabular mono figures so columns never jitter.",
+        "Solana integration for the live shell: @solana/web3.js + @solana/wallet-adapter-react (+ wallet-adapter-react-ui themed to the palette) for connect and reading the on-chain verifier/commitment-registry accounts and tx signatures.",
+        "Performance/credibility guardrails: bake grain/noise to a static texture (never per-pixel-per-frame); respect prefers-reduced-motion globally; kill WebGL entirely on mobile; lazy-load the hero renderer below the fold of TTI; keep one accent (Oxide) for the single primary action so nothing competes."
+      ],
+      "writeup": "# Yore — Design Direction: \"The Core Sample\"\n\n## The thesis\nYore lets Solana programs read and **prove** the chain's past. So we don't build a crypto site — we build a **deep-time drilling instrument**. Solana's history is a vertical sedimentary column: genesis at bedrock, the current slot at the surface. Yore drills to any prior slot, extracts one account's state, and returns it **sealed with a tamper-evident proof**. Time is measured in **slots and epochs** (Solana's native time unit), never clocks — technically honest and ownable.\n\nThis deliberately rejects the default purple→cyan crypto gradient (the research's #1 pitfall) and instead pulls color and form from the *source domain*: stratigraphy, intaglio banknote engraving, and records-office restraint. It reads as serious ZK infra because every flourish encodes real data.\n\nThree signature ideas carry the brand, each lifted from the strongest temporal/proof references and made specific to Yore:\n1. **The Proof Seal** — a guilloche rosette generated deterministically from each Merkle root. Same root → same un-forgeable fingerprint. It draws itself line-by-line while the proof verifies, then stamps down. This is the logo-grade hook.\n2. **The Strata Drill** — the page's vertical axis is Solana time; scrolling down drills deeper into slot-strata with a live depth gauge reading `SLOT N · EPOCH E`.\n3. **The Tamper Toggle** — flip one byte, watch the Merkle branch and root cascade red and the seal refuse to stamp. Restore → reconcile to green. Trust made visceral, and it doubles as the optimistic-path challenge explainer.\n4. **The Proof Ledger Feed** — a live, update-in-place logbook of queries landing, with the real quantified-credibility dashboard (states proven, median verify = one proof check).\n\n## Palette (dark archival, one accent)\n- Base `Bedrock #0B0E0C` (green-black void, not navy), surfaces `Strata #12161A`, rules `Hairline #1E2A24`.\n- **Oxide `#C24B2C`** — the one primary accent. Seal, active drill head, single primary action only.\n- **Patina `#3FB28B`** — sober oxidized-copper success (NOT Solana neon green). \"Proof reconciles to root.\"\n- **Amber `#E8B23A`** — slot/epoch numerics + in-flight \"proving\" state.\n- `Fossil #ECE6D6` cream paper for the certificate register; `Ash #8A938C` secondary; `Tamper #E5484D` for the tamper demo / failed verify only.\n- Epoch bands (low-sat ICS earth tones) tint the strata column so history reads sedimentary.\n\nDiscipline is the rule: one accent on the one action; everything else neutral. That restraint is what reads expensive (Helius/Pyth/Backpack lesson).\n\n## Type (mono is the trust voice)\n- **Serif display** for declarative headlines + the certificate title only — `Editorial New` (or fully-free `Fraunces` at high contrast). Signals scholarly archive over generic grotesk.\n- **Geist** (free, OFL) for all body/UI — engineered, not default-Inter.\n- **IBM Plex Mono** (free) for EVERY piece of chain data: slots, pubkeys, roots, proof bytes, balances — always tabular figures. Mono = the verifiable-compute signal. `3270`/`Departure Mono` only for the live prover-log HUD.\n\n## Landing (ordered)\nHero (\"Read the past. Prove it on-chain.\") → The Gap (Solana is blind to its history) → How It Works (scrollytelling proof pipeline, Merkle path climbing leaf→root) → Tamper Toggle → Proof Model (ZK/Optimistic/Hybrid token-cards + verifier snippet) → Use Cases (concrete \"prove W held ≥N of MINT at slot S\") → The Ledger/Network (live feed + real metrics + roles) → Roadmap (vertical strata timeline) → $YORE/Footer (utility table + honest genesis-trust note + guilloche band).\n\nTwo registers, split on purpose: **WebGL/strata spectacle for the hero; institutional Fossil-paper + serif for the proof/receipt UI** — because Yore makes real cryptographic claims and the verification surface must feel like a security document, not a hype page.\n\n## The dapp shell\nOne terminal-archive shell, \"one shell many query types via tabs.\" Left rail = query types (Balance-at-slot live; TWAP / Holding / Eligibility as \"coming\" so the taxonomy reads as real infra). Center = the **Query Console** (one dense action card, Jupiter-style); right = the **Proof Drawer**.\n\nFour felt states, narrated by motion (the wait IS the explanation):\n1. **Compose** — mono inputs for account W + target slot S (with epoch helper + \"pick on the strata column\"), settlement toggle (Optimistic / Instant-ZK) that maps to the reverse-Dutch price; live verifier-call snippet beside it.\n2. **Aucting/Proving** — price ticks down-to-claim in Amber; prover log streams `reading state @ slot S · building Merkle path · generating Groth16…`; the Merkle branch climbs leaf→root in real time. Numbers tick in place, never reload.\n3. **Verifying** — a single emphasized `alt_bn128 verify` line resolves; the seal starts drawing from the root bytes.\n4. **Verified** — seal stamps, Oxide→Patina reconcile, and the view switches to a **Fossil-paper certificate**: the plain proven fact, then the inspectable receipt (committed root, expandable Merkle path, proof bytes, verifier tx → Solscan, prover, settle path), a client-side \"Verify yourself\" button, and a copy-as-CPI snippet. Tensor-style Lite/Pro density toggle.\n\n## How to build it\nNext.js (App Router) + Tailwind (palette tokens, `tabular-nums`) + framer-motion baseline. GSAP+ScrollTrigger+SplitText (now fully free) for scrollytelling and per-char headline stagger with asymmetric timing. Lenis bound into the GSAP ticker (shared rAF), gentle, fully behind `prefers-reduced-motion` — **no scroll-hijacking** on technical content. Strata hero in **OGL/Canvas** (not full three.js) since it's the only heavy visual — one reused stratum primitive, render only visible slices, fed real slot data. Proof Seal = pure SVG from a Lissajous/epicycloid generator seeded by root bytes, self-drawn via stroke-dashoffset, path cached. Tamper toggle + Merkle path use **@noble/hashes** to *actually* re-derive the branch on byte-flip — real, not faked, because this is a proof product. Solana: @solana/web3.js + wallet-adapter (provider-grid bottom-sheet) reading the real verifier/commitment-registry accounts.\n\nGuardrails: bake noise to a texture, tier fidelity (WebGL desktop → static SVG column on mobile/reduced-motion), one accent for one action, real metrics only (unverifiable stats are self-undermining for a verifiability product). Every 3D/shader element maps to real on-chain/state data or it gets cut.\n\n## Files referenced for grounding\n- `/Users/nk/Desktop/Yore/id.md` — full technical concept (flow, roles, proof model, $YORE utility, MVP = balance-at-slot, roadmap).\n- `/Users/nk/Desktop/Yore/programs/yore/src/lib.rs` — Anchor program (declare_id `3YnWj7ftTswFDKHSj9jxxzEJCQC2FB37zrDpzqfAB7px`; currently scaffold `initialize`).\n- `/Users/nk/Desktop/Yore/Anchor.toml`, `/Users/nk/Desktop/Yore/tests/yore.ts` — Anchor/test setup. The dapp shell copy (instruction names, verifier call) should track these as the programs are built out."
+    }
+  }
+}
