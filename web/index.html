@@ -42,11 +42,15 @@
     <a href="#positioning">Positioning</a>
   </nav>
   <div class="nav__actions">
-    <!-- <button class="ticker-chip" id="ticker-chip" type="button" aria-label="Copy $YORE ticker" title="Copy ticker">
-      <span class="ticker-chip__pulse"></span>
-      <span class="ticker-chip__label">$YORE</span>
-      <span class="ticker-chip__copy">copy</span>
-    </button> -->
+    <a class="nav__social" data-social="solscan" href="#" target="_blank" rel="noopener" aria-label="Program on Solscan" title="Program on Solscan">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+    </a>
+    <a class="nav__social" data-social="github" href="#" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 4.6 18 5 18 5c.6 1.7.2 3 .1 3.3.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+    </a>
+    <a class="nav__social" data-social="x" href="#" target="_blank" rel="noopener" aria-label="X" title="X (Twitter)">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L22.5 22h-6.9l-5.4-7.06L4 22H.74l8.02-9.17L1.5 2h7.06l4.88 6.45L18.244 2Zm-1.21 18h1.92L7.04 4H5l12.03 16Z"/></svg>
+    </a>
     <a class="btn btn--primary" href="#demo">Query the past</a>
   </div>
   <button class="nav__burger" id="nav-burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
@@ -63,7 +67,6 @@
         <div class="hero__badges reveal">
           <span class="badge"><i class="dot"></i>Solana / SVM</span>
           <span class="badge">ZK &amp; verifiable compute</span>
-          <span class="badge badge--warn">pre-build concept</span>
         </div>
         <h1 class="hero__title reveal">
           <span class="hero__ticker">$YORE</span>
@@ -111,11 +114,6 @@
           <div class="hourglass-card__foot">
             <p class="hg-note">Sand marks the passing of slots. Each slot commits a Merkle root of Solana's account state — the basis for every historical proof.</p>
           </div>
-        </div>
-        <!-- pixel decoration echoing the header art -->
-        <div class="pixel-eyes" id="pixel-eyes" aria-hidden="true">
-          <span class="eye"><i></i></span>
-          <span class="eye"><i></i></span>
         </div>
       </div>
     </div>
@@ -542,7 +540,7 @@
         <p>Pulls historical account state from an existing archive, builds the Merkle path against the seeded root, and generates a ZK proof of the read in a zkVM.</p>
       </article>
       <article class="glass card card--mvp reveal">
-        <span class="card__index">demo</span>
+        <span class="card__index">sample</span>
         <h3>Sample contract</h3>
         <p>Requests “balance of wallet W at slot S,” a prover fulfills it, the verifier checks the proof, and the contract consumes the verified result and acts on it.</p>
       </article>
@@ -664,16 +662,15 @@
       </div>
       <div class="footer__col">
         <h3>Connect</h3>
-        <a href="#" class="footer__social">X / Twitter</a>
-        <a href="#" class="footer__social">Discord</a>
-        <a href="#" class="footer__social">GitHub</a>
+        <a data-social="solscan" class="footer__social" href="#" target="_blank" rel="noopener">Program on Solscan ↗</a>
+        <a data-social="github" class="footer__social" href="#" target="_blank" rel="noopener">GitHub ↗</a>
+        <a data-social="x" class="footer__social" href="#" target="_blank" rel="noopener">X ↗</a>
         <a href="#demo">Query the past</a>
       </div>
     </div>
   </div>
   <div class="footer__bottom">
-    <div class="footer__eyes" aria-hidden="true"><span class="eye"><i></i></span><span class="eye"><i></i></span></div>
-    <p>© <span id="year">2026</span> Yore Coprocessor · pre-build concept. Not financial advice.</p>
+    <p>© <span id="year">2026</span> Yore Coprocessor</p>
     <p class="footer__net">Solana / SVM · ZK &amp; verifiable compute infrastructure</p>
   </div>
 </footer>

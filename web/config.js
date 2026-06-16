@@ -15,6 +15,13 @@
     NETWORK: "mainnet-beta", // "devnet" | "mainnet-beta"
     PROGRAM_ID: "3YnWj7ftTswFDKHSj9jxxzEJCQC2FB37zrDpzqfAB7px",
 
+    // socials — wired into header + footer from this one place
+    SOCIALS: {
+      solscan: "https://solscan.io/account/3YnWj7ftTswFDKHSj9jxxzEJCQC2FB37zrDpzqfAB7px",
+      github: "https://github.com/zaydenholloway/yore-coprocessor",
+      x: "https://x.com/yorecoprocessor", // ◄ confirm / replace your X handle
+    },
+
     // deploy/initialize parameters (base units; used by scripts/initialize.js)
     // minimal on purpose — works with a tiny token supply; raise later via governance
     MIN_PROVER_STAKE: "1", // min $YORE collateral a prover must stake (base units)

@@ -130,6 +130,12 @@
     el.addEventListener('click', copyCA);
   });
 
+  // wire social links (Solscan / GitHub / X) from config — one source of truth
+  ['solscan', 'github', 'x'].forEach((k) => {
+    const url = (CFG.SOCIALS || {})[k];
+    if (url) $$('[data-social="' + k + '"]').forEach((a) => { a.href = url; });
+  });
+
   /* ----------------------------------------------------------
      4. REVEAL ON SCROLL
   ---------------------------------------------------------- */
@@ -241,91 +247,57 @@
     const cv = $('#bg-canvas');
     if (!cv || reduceMotion) { if (cv) cv.style.display = 'none'; return; }
     const ctx = cv.getContext('2d');
-    let W, H, dpr, blobs, grains;
 
-    const palette = ['#5b6fe6', '#6f7bf0', '#7c86ee', '#4b4df1']; // darker grains for the light page
+    // PIXEL TRAIL — the cursor lights pixels that fade out, in the Yore palette
+    const SIZE = window.innerWidth < 768 ? 44 : 64; // pixel cell (px)
+    const FADE = 1100;                               // fade duration (ms)
+    const COLORS = ['#8fd9ea', '#6f7bf0', '#5b6fe6', '#b3aef0'];
+    let W, H, dpr, cols, rows, alpha, hue;
 
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = window.innerWidth;
-      H = window.innerHeight;
+      W = window.innerWidth; H = window.innerHeight;
       cv.width = W * dpr; cv.height = H * dpr;
       cv.style.width = W + 'px'; cv.style.height = H + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(W / SIZE); rows = Math.ceil(H / SIZE);
+      alpha = new Float32Array(cols * rows);
+      hue = new Uint8Array(cols * rows);
     };
+    resize();
+    window.addEventListener('resize', debounce(resize));
 
-    const makeSprite = (b) => {
-      // pre-render the radial gradient once per resize (cap internal size)
-      const d = Math.max(2, Math.ceil(Math.min(b.r, 900) * 2));
-      const scale = d / (b.r * 2);
-      const oc = document.createElement('canvas');
-      oc.width = d; oc.height = d;
-      const octx = oc.getContext('2d');
-      const rr = b.r * scale;
-      const g = octx.createRadialGradient(rr, rr, 0, rr, rr, rr);
-      g.addColorStop(0, b.c + '4d');
-      g.addColorStop(0.55, b.c + '1f');
-      g.addColorStop(1, b.c + '00');
-      octx.fillStyle = g;
-      octx.fillRect(0, 0, d, d);
-      b.sprite = oc;
+    const light = (x, y) => {
+      const c = Math.floor(x / SIZE), r = Math.floor(y / SIZE);
+      if (c < 0 || r < 0 || c >= cols || r >= rows) return;
+      const i = r * cols + c;
+      alpha[i] = 1;
+      hue[i] = (Math.random() * COLORS.length) | 0;
     };
-
-    const initScene = () => {
-      blobs = [
-        { x: W * 0.18, y: H * 0.22, r: Math.max(W, H) * 0.42, c: '#7c86ee', vx: 0.06, vy: 0.04 },
-        { x: W * 0.82, y: H * 0.30, r: Math.max(W, H) * 0.40, c: '#9aa9f2', vx: -0.05, vy: 0.05 },
-        { x: W * 0.55, y: H * 0.85, r: Math.max(W, H) * 0.46, c: '#8fd9ea', vx: 0.04, vy: -0.05 },
-      ];
-      blobs.forEach(makeSprite);
-      const count = Math.min(90, Math.floor((W * H) / 22000));
-      grains = Array.from({ length: count }, () => ({
-        x: rand(0, W), y: rand(0, H),
-        s: rand(1.2, 2.8),
-        vy: rand(0.12, 0.5),
-        vx: rand(-0.08, 0.08),
-        a: rand(0.15, 0.6),
-        c: palette[(Math.random() * palette.length) | 0],
-      }));
-    };
-
-    resize(); initScene();
-    window.addEventListener('resize', debounce(() => { resize(); initScene(); }));
-
-    let mx = W / 2, my = H / 2;
-    window.addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; }, { passive: true });
+    window.addEventListener('pointermove', (e) => light(e.clientX, e.clientY), { passive: true });
 
     let last = 0;
-    const FRAME_MS = 1000 / 30; // aurora drift reads identically at 30fps
     const frame = (now) => {
-      if (now - last < FRAME_MS) return;
-      last = now;
+      const dt = last ? now - last : 16; last = now;
+      const decay = dt / FADE;
       ctx.clearRect(0, 0, W, H);
-
-      // soft drifting colour pools over the light page gradient
-      blobs.forEach(b => {
-        b.x += b.vx; b.y += b.vy;
-        if (b.x < -b.r * 0.3 || b.x > W + b.r * 0.3) b.vx *= -1;
-        if (b.y < -b.r * 0.3 || b.y > H + b.r * 0.3) b.vy *= -1;
-        const px = b.x + (mx - W / 2) * 0.02;
-        const py = b.y + (my - H / 2) * 0.02;
-        ctx.drawImage(b.sprite, px - b.r, py - b.r, b.r * 2, b.r * 2);
-      });
-
-      // drifting pixel grains (the "sand of time")
-      grains.forEach(p => {
-        p.y += p.vy; p.x += p.vx;
-        if (p.y > H + 4) { p.y = -4; p.x = rand(0, W); }
-        if (p.x < -4) p.x = W + 4; if (p.x > W + 4) p.x = -4;
-        ctx.globalAlpha = p.a;
-        ctx.fillStyle = p.c;
-        ctx.fillRect(p.x, p.y, p.s, p.s);
-      });
+      const pad = SIZE * 0.16, sz = SIZE - pad * 2, rad = Math.min(9, sz * 0.3);
+      for (let i = 0; i < alpha.length; i++) {
+        let a = alpha[i];
+        if (a <= 0) continue;
+        a -= decay; if (a < 0) a = 0; alpha[i] = a;
+        const c = i % cols, r = (i / cols) | 0;
+        ctx.globalAlpha = a * 0.5;
+        ctx.fillStyle = COLORS[hue[i]];
+        const x = c * SIZE + pad, y = r * SIZE + pad;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(x, y, sz, sz, rad); else ctx.rect(x, y, sz, sz);
+        ctx.fill();
+      }
       ctx.globalAlpha = 1;
     };
 
-    // gate on the hero region: cards below the fold then blur a static backdrop
-    gate($('#hero') || cv, rafLoop(frame));
+    gate(cv, rafLoop(frame));
   })();
 
   /* ----------------------------------------------------------
@@ -464,25 +436,8 @@
       });
     };
 
-    if (reduceMotion) {
-      // static mid-flow state: partly-drained top + settled bottom pile
-      const mid = (ROWS - 1) / 2;
-      sand = [];
-      for (let r = Math.floor(mid * 0.55); r < mid - 0.5; r++) {
-        const f = frameRow(r);
-        if (f.wall) continue;
-        for (let c = f.left + 1; c <= f.right - 1; c++) sand.push({ c: c + 0.5, r: r + 0.5, settled: true, vy: 0 });
-      }
-      for (let r = ROWS - 3; r > mid + 1.5; r--) {
-        const f = frameRow(r);
-        if (f.wall) continue;
-        for (let c = f.left + 1; c <= f.right - 1; c++) sand.push({ c: c + 0.5, r: r + 0.5, settled: true, vy: 0 });
-      }
-      total = sand.length;
-      render();
-    } else {
-      gate(cv, rafLoop(() => { step(); render(); }));
-    }
+    // static first frame — sand rests in the top chamber, no animation
+    render();
   })();
 
   /* ----------------------------------------------------------

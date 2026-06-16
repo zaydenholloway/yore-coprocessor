@@ -181,7 +181,14 @@ html { scrollbar-width: thin; scrollbar-color: var(--blue) var(--bg); }
   padding: .45rem .75rem; border-radius: 9px; transition: color .2s, background .2s;
 }
 .nav__links a:hover { color: var(--ink); background: rgba(255,255,255,.05); }
-.nav__actions { display: flex; align-items: center; gap: .7rem; }
+.nav__actions { display: flex; align-items: center; gap: .55rem; }
+.nav__social {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 10px;
+  color: var(--ink-dim); border: 1px solid var(--line);
+  transition: color .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
+}
+.nav__social:hover { color: var(--ink); background: rgba(255,255,255,.06); border-color: rgba(143,217,234,.35); }
 
 .ticker-chip {
   display: inline-flex; align-items: center; gap: .5rem;
