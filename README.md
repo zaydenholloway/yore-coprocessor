@@ -102,12 +102,6 @@ node scripts/initialize.js                  # configure admin, mint, collateral 
 | Phase 2 — permissionless prover auction, slashing, fee market | roadmap |
 | Phase 3 — decentralized archivists, retrievability proofs | roadmap |
 
-## Honest positioning
-
-A proof attests correct computation **against the committed root**, not that the root
-reflects reality. At genesis, commitment correctness leans on existing archives;
-decentralizing archival and removing that trust is roadmap work, stated plainly.
-
 ---
 
 <div align="center"><sub>Solana / SVM · ZK &amp; verifiable-compute infrastructure</sub></div>
