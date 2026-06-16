@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#070612" />
+<title>$YORE — Yore Coprocessor · Verifiable historical-state coprocessor for Solana</title>
+<meta name="description" content="Yore is a verifiable historical-state coprocessor for Solana. On-chain programs read the chain's past — balances, ownership, prices, eligibility at any prior slot — and trust the answer through a single on-chain proof verification." />
+<link rel="icon" type="image/png" href="assets/pfp.png" />
+<link rel="apple-touch-icon" href="assets/pfp.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+
+<!-- ===== Animated background ===== -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="bg-grain" aria-hidden="true"></div>
+<div class="bg-vignette" aria-hidden="true"></div>
+
+<!-- Scroll progress (a thin "slot" bar) -->
+<div class="scroll-progress" aria-hidden="true"><span id="scroll-bar"></span></div>
+
+<!-- ===== Navigation ===== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Yore Coprocessor home">
+    <img src="assets/logo.png" alt="" class="nav__logo" width="40" height="40" />
+    <span class="nav__word">
+      <span class="nav__word-top">yore</span>
+      <span class="nav__word-bottom">COPROCESSOR</span>
+    </span>
+  </a>
+  <nav class="nav__links" id="nav-links" aria-label="Primary">
+    <a href="#problem">Problem</a>
+    <a href="#how">How it works</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#usecases">Use cases</a>
+    <a href="#positioning">Positioning</a>
+  </nav>
+  <div class="nav__actions">
+    <!-- <button class="ticker-chip" id="ticker-chip" type="button" aria-label="Copy $YORE ticker" title="Copy ticker">
+      <span class="ticker-chip__pulse"></span>
+      <span class="ticker-chip__label">$YORE</span>
+      <span class="ticker-chip__copy">copy</span>
+    </button> -->
+    <a class="btn btn--primary" href="#demo">Query the past</a>
+  </div>
+  <button class="nav__burger" id="nav-burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <div class="hero__badges reveal">
+          <span class="badge"><i class="dot"></i>Solana / SVM</span>
+          <span class="badge">ZK &amp; verifiable compute</span>
+          <span class="badge badge--warn">pre-build concept</span>
+        </div>
+        <h1 class="hero__title reveal">
+          <span class="hero__ticker">$YORE</span>
+          Read Solana's <span class="grad-text">past</span>.
+          <br />Trust it in <span class="grad-text">one proof</span>.
+        </h1>
+        <p class="hero__lede reveal">
+          A verifiable historical-state coprocessor for Solana. Programs read the chain's
+          past — balances, ownership, prices and eligibility at any prior slot — and trust
+          the answer through a single on-chain proof verification.
+        </p>
+        <div class="hero__cta reveal">
+          <a class="btn btn--primary btn--lg" href="#demo">
+            <span>Query the past</span>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#how">How it works</a>
+        </div>
+        <div class="hero__stats reveal">
+          <div class="stat">
+            <span class="stat__num" data-count="1" data-suffix="">1</span>
+            <span class="stat__label">proof check to verify</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="10" data-prefix="≥" data-suffix="×">&ge;10&times;</span>
+            <span class="stat__label">collateral vs. payout</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="4" data-suffix="">4</span>
+            <span class="stat__label">network roles</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="2" data-suffix="">2</span>
+            <span class="stat__label">settlement paths</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal">
+        <div class="glass hourglass-card">
+          <div class="hourglass-card__head">
+            <span class="hourglass-card__title">historical state · per slot</span>
+          </div>
+          <canvas id="hourglass-canvas" width="320" height="420" aria-label="Animated pixel hourglass representing Solana's slot-based time"></canvas>
+          <div class="hourglass-card__foot">
+            <p class="hg-note">Sand marks the passing of slots. Each slot commits a Merkle root of Solana's account state — the basis for every historical proof.</p>
+          </div>
+        </div>
+        <!-- pixel decoration echoing the header art -->
+        <div class="pixel-eyes" id="pixel-eyes" aria-hidden="true">
+          <span class="eye"><i></i></span>
+          <span class="eye"><i></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>VERIFIABLE</span><b>✦</b><span>HISTORICAL STATE</span><b>✦</b><span>PERMISSIONLESS</span><b>✦</b>
+      <span>SLOT-BASED TIME</span><b>✦</b><span>SVM-NATIVE</span><b>✦</b><span>ZK + OPTIMISTIC</span><b>✦</b>
+      <span>VERIFIABLE</span><b>✦</b><span>HISTORICAL STATE</span><b>✦</b><span>PERMISSIONLESS</span><b>✦</b>
+      <span>SLOT-BASED TIME</span><b>✦</b><span>SVM-NATIVE</span><b>✦</b><span>ZK + OPTIMISTIC</span><b>✦</b>
+    </div>
+  </div>
+
+  <!-- ===== 01 · PROBLEM ===== -->
+  <section class="section" id="problem">
+    <div class="section__head reveal">
+      <span class="kicker"><i>01</i> The Problem</span>
+      <h2 class="section__title">Solana cannot read its <span class="grad-text">own past</span>.</h2>
+      <p class="section__sub">
+        Solana programs are blind to their own history. The runtime exposes only the current
+        state of accounts passed into an instruction — the gap Yore fills comes from a few
+        structural facts, plus a category EVM already has.
+      </p>
+    </div>
+    <div class="cards cards--4">
+      <article class="glass card card--problem reveal">
+        <span class="card__index">01</span>
+        <h3>No historical reads in the runtime</h3>
+        <p>
+          A program only sees the accounts handed to it for the current transaction. There is
+          no syscall for “what was the state of account X at slot S.” Even current-state reads
+          are limited to explicitly passed accounts.
+        </p>
+      </article>
+      <article class="glass card card--problem reveal">
+        <span class="card__index">02</span>
+        <h3>History is pruned &amp; centralized</h3>
+        <p>
+          Validators do not retain full historical account state; ledger history is pruned
+          aggressively. Access to the past depends on centralized archives and warehouses —
+          none of them verifiable on-chain.
+        </p>
+      </article>
+      <article class="glass card card--problem reveal">
+        <span class="card__index">03</span>
+        <h3>The current workaround is trust</h3>
+        <p>
+          Protocols that need historical facts run an off-chain script and have a privileged
+          signer push the result. The user must trust the script and the signer — breaking the
+          trust model that makes the rest of the app trustless.
+        </p>
+      </article>
+      <article class="glass card card--problem reveal">
+        <span class="card__index">04</span>
+        <h3>EVM has this; Solana doesn't</h3>
+        <p>
+          The EVM ecosystem already treats historical-state access as a first-class
+          infrastructure category. Solana, despite a huge DeFi and airdrop economy that
+          constantly reasons about the past, has no native equivalent —
+          <span class="grad-text">that is the opening.</span>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== 02 · HOW IT WORKS (Solution + Demo) ===== -->
+  <section class="section" id="how">
+    <div class="section__head reveal">
+      <span class="kicker"><i>02</i> How It Works</span>
+      <h2 class="section__title">A coprocessor for <span class="grad-text">Solana's history</span>.</h2>
+      <p class="section__sub">
+        Yore moves a historical computation off-chain to a competitive prover network and
+        brings back a result <em>plus a proof</em>, so the requesting program inherits the same
+        security as running the computation on-chain — at a fraction of the cost.
+      </p>
+    </div>
+
+    <div class="flow" id="flow">
+      <article class="glass flow__step reveal" data-step="1">
+        <div class="flow__num">01</div>
+        <div class="flow__icon" data-icon="request"></div>
+        <h3>Request</h3>
+        <p>A program submits a query: a type, parameters, the target slot or slot range, plus a payment and deadline.</p>
+      </article>
+      <div class="flow__arrow" aria-hidden="true"></div>
+      <article class="glass flow__step reveal" data-step="2">
+        <div class="flow__num">02</div>
+        <div class="flow__icon" data-icon="compute"></div>
+        <h3>Compute</h3>
+        <p>A prover claims it, reads the relevant historical state against the committed root, and executes the query.</p>
+      </article>
+      <div class="flow__arrow" aria-hidden="true"></div>
+      <article class="glass flow__step reveal" data-step="3">
+        <div class="flow__num">03</div>
+        <div class="flow__icon" data-icon="prove"></div>
+        <h3>Prove</h3>
+        <p>The prover produces a ZK proof of correct execution — or an optimistic result backed by a bond.</p>
+      </article>
+      <div class="flow__arrow" aria-hidden="true"></div>
+      <article class="glass flow__step reveal" data-step="4">
+        <div class="flow__num">04</div>
+        <div class="flow__icon" data-icon="verify"></div>
+        <h3>Verify &amp; settle</h3>
+        <p>The verifier checks the proof in one call and writes the result on-chain. The prover is paid; bad proofs are slashed.</p>
+      </article>
+    </div>
+
+    <!-- interactive query console -->
+    <div id="demo">
+      <h3 class="subhead reveal">Query the past</h3>
+      <p class="subhead-note reveal">
+        Pick a query, point it at a slot, and run the prover loop — request, compute, prove,
+        verify, settle. The result comes back with a succinct proof the on-chain verifier checks
+        in a single call.
+      </p>
+
+      <div class="demo glass reveal">
+        <div class="demo__panel demo__panel--form">
+          <div class="demo__tabs" role="tablist" aria-label="Query type">
+            <button class="demo__tab is-active" data-query="balance" type="button" role="tab" aria-selected="true">balance-at-slot</button>
+            <button class="demo__tab" data-query="twap" type="button" role="tab" aria-selected="false">TWAP-over-range</button>
+            <button class="demo__tab" data-query="holding" type="button" role="tab" aria-selected="false">holding-at-snapshot</button>
+          </div>
+
+          <label class="field">
+            <span class="field__label">Wallet / account</span>
+            <input id="q-wallet" class="field__input mono" type="text" value="9xQeWv…rpZb9PB5wkqf" spellcheck="false" />
+          </label>
+
+          <div class="field-row">
+            <label class="field" id="field-slot">
+              <span class="field__label" id="slot-label">Target slot</span>
+              <input id="q-slot" class="field__input mono" type="text" value="284,910,377" spellcheck="false" />
+            </label>
+            <label class="field" id="field-extra">
+              <span class="field__label" id="extra-label">Mint</span>
+              <input id="q-extra" class="field__input mono" type="text" value="So111…1112" spellcheck="false" />
+            </label>
+          </div>
+
+          <div class="field-row">
+            <label class="seg">
+              <span class="field__label">Settlement path</span>
+              <span class="seg__group" id="path-group" role="group" aria-label="Settlement path">
+                <button class="seg__btn is-active" data-path="hybrid" type="button" aria-pressed="true">Hybrid</button>
+                <button class="seg__btn" data-path="zk" type="button" aria-pressed="false">ZK</button>
+                <button class="seg__btn" data-path="optimistic" type="button" aria-pressed="false">Optimistic</button>
+              </span>
+            </label>
+          </div>
+
+          <button class="btn btn--primary btn--block btn--lg" id="run-demo" type="button">
+            <span id="run-label">Submit query</span>
+          </button>
+          <p class="demo__hint">Sample query · Solana devnet</p>
+        </div>
+
+        <div class="demo__panel demo__panel--terminal">
+          <div class="terminal">
+            <div class="terminal__bar">
+              <span class="led led--red"></span><span class="led led--amber"></span><span class="led led--green"></span>
+              <span class="terminal__title">yore-prover · devnet</span>
+            </div>
+            <div class="terminal__body" id="terminal-body">
+              <p class="t-line t-dim">$ yore await <span class="t-ok">request</span> …</p>
+              <p class="t-line t-dim">// submit a query to run the proving loop</p>
+            </div>
+          </div>
+
+          <!-- pipeline stepper -->
+          <div class="pipeline" id="pipeline">
+            <div class="pipeline__step" data-pstep="request"><i></i><span>Request</span></div>
+            <div class="pipeline__step" data-pstep="compute"><i></i><span>Compute</span></div>
+            <div class="pipeline__step" data-pstep="prove"><i></i><span>Prove</span></div>
+            <div class="pipeline__step" data-pstep="verify"><i></i><span>Verify</span></div>
+            <div class="pipeline__step" data-pstep="settle"><i></i><span>Settle</span></div>
+          </div>
+
+          <!-- result card -->
+          <div class="result" id="result" hidden>
+            <div class="result__row">
+              <span class="result__k">result</span>
+              <span class="result__v grad-text" id="r-value">—</span>
+            </div>
+            <div class="result__row">
+              <span class="result__k">proof</span>
+              <span class="result__v mono" id="r-proof">—</span>
+            </div>
+            <div class="result__grid">
+              <div><span>produce</span><b id="r-produce">—</b></div>
+              <div><span>verify</span><b id="r-verify">—</b></div>
+              <div><span>path</span><b id="r-path">—</b></div>
+              <div><span>status</span><b class="t-ok" id="r-status">—</b></div>
+            </div>
+          </div>
+
+          <p id="demo-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 · ARCHITECTURE & PROOF ===== -->
+  <section class="section" id="architecture">
+    <div class="section__head reveal">
+      <span class="kicker"><i>03</i> Architecture &amp; Proof</span>
+      <h2 class="section__title">Four roles. <span class="grad-text">Two proof paths</span>.</h2>
+      <p class="section__sub">
+        The network separates four functions — distinct for incentive and slashing purposes —
+        and routes each query to the settlement path that fits it.
+      </p>
+    </div>
+
+    <h3 class="subhead reveal">A verifiable market of four roles</h3>
+    <div class="cards cards--4">
+      <article class="glass card card--role reveal">
+        <div class="card__role-icon" data-role="requestor"></div>
+        <h3>Requestor</h3>
+        <p>Programs &amp; dApps that need a historical fact on-chain. Submit queries and pay per fulfilled request.</p>
+        <div class="card__tag">Pays fees in $YORE / SOL</div>
+      </article>
+      <article class="glass card card--role reveal">
+        <div class="card__role-icon" data-role="prover"></div>
+        <h3>Prover</h3>
+        <p>Executes the query over historical state and generates the proof. Competes for requests in a reverse-Dutch auction.</p>
+        <div class="card__tag">Stakes $YORE · earns fees + emissions</div>
+      </article>
+      <article class="glass card card--role reveal">
+        <div class="card__role-icon" data-role="archivist"></div>
+        <h3>Archivist</h3>
+        <p>Maintains and serves the committed historical state (erasure-coded), guaranteeing data availability for provers.</p>
+        <div class="card__tag">Stakes $YORE · storage emissions · slashed on failed retrievability</div>
+      </article>
+      <article class="glass card card--role reveal">
+        <div class="card__role-icon" data-role="staker"></div>
+        <h3>Staker / verifier</h3>
+        <p>Secures the commitment roots and the network; runs the on-chain verifier program and challenge logic.</p>
+        <div class="card__tag">Shares epoch emissions + fees</div>
+      </article>
+    </div>
+
+    <div class="glass note-bar reveal">
+      <div class="note-bar__icon" data-icon="anchor"></div>
+      <p>
+        On-chain, Yore is a small set of <strong>Anchor programs</strong>: a request queue, a
+        commitment registry storing rolling historical-state roots, and a verifier that
+        validates proofs — Groth16 via Solana's <code>alt_bn128</code> syscalls for the ZK path,
+        or a dispute game for the optimistic path.
+      </p>
+    </div>
+
+    <h3 class="subhead reveal">Settlement paths &amp; the verification asymmetry</h3>
+    <div class="cards proof-cards">
+      <article class="glass card card--proof reveal">
+        <header class="card--proof__head"><span class="pill pill--zk">ZK</span></header>
+        <p class="card--proof__how">Prover proves correct execution against the committed root inside a zkVM; the verifier checks a succinct proof on-chain.</p>
+        <dl>
+          <div><dt>Best for</dt><dd>High-value reads needing instant finality — liquidations, large airdrops.</dd></div>
+          <div><dt>Trade-off</dt><dd>Higher proving cost &amp; latency per request.</dd></div>
+        </dl>
+      </article>
+      <article class="glass card card--proof reveal">
+        <header class="card--proof__head"><span class="pill pill--opt">Optimistic</span></header>
+        <p class="card--proof__how">Prover posts result + bond; a challenge window lets anyone force re-execution of a sample and slash a fraudulent prover.</p>
+        <dl>
+          <div><dt>Best for</dt><dd>Cheap, high-volume, low-stakes reads where short finality delay is fine.</dd></div>
+          <div><dt>Trade-off</dt><dd>Finality latency (challenge window); liveness on watchers.</dd></div>
+        </dl>
+      </article>
+      <article class="glass card card--proof card--proof--feat reveal">
+        <header class="card--proof__head"><span class="pill pill--hyb">Hybrid</span><span class="tag-default">default</span></header>
+        <p class="card--proof__how">Optimistic by default; auto-escalates to a ZK proof when the requestor flags instant finality or a value threshold is crossed.</p>
+        <dl>
+          <div><dt>Best for</dt><dd>Most production traffic.</dd></div>
+          <div><dt>Trade-off</dt><dd>Requires both pipelines maintained.</dd></div>
+        </dl>
+      </article>
+      <article class="glass card card--proof card--asym reveal" id="asym">
+        <header class="card--proof__head"><span class="pill pill--asym">Asymmetry</span></header>
+        <p class="card--proof__how">Producing a result needs indexing and compute; verifying it is <strong>one proof check</strong> (ZK) or one sampled re-execution (optimistic). Paid work is always work the network can independently check.</p>
+        <div class="asym__viz" aria-hidden="true">
+          <div class="asym__bar asym__bar--produce">
+            <span class="asym__fill" id="asym-produce"></span>
+            <span class="asym__label">produce · index + compute</span>
+          </div>
+          <div class="asym__bar asym__bar--verify">
+            <span class="asym__fill asym__fill--verify" id="asym-verify"></span>
+            <span class="asym__label">verify · 1 call</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== 04 · COMMITMENTS & VERIFIABLE WORK ===== -->
+  <section class="section" id="protocol">
+    <div class="section__head reveal">
+      <span class="kicker"><i>04</i> Commitments &amp; Verifiable Work</span>
+      <h2 class="section__title">Cheap to verify, <span class="grad-text">expensive to fake</span>.</h2>
+      <p class="section__sub">
+        Everything rests on a verifiable commitment to Solana's past state, and a settlement
+        layer that only ever pays for work the network can independently check.
+      </p>
+    </div>
+
+    <h3 class="subhead reveal">State commitment &amp; data availability</h3>
+    <div class="split">
+      <div class="split__media reveal">
+        <div class="glass merkle">
+          <div class="merkle__title">Merkle / Verkle root · per slot</div>
+          <div class="merkle-tree" id="merkle-tree" aria-hidden="true"></div>
+          <div class="merkle__caption">each account public key → a hash of its data</div>
+        </div>
+      </div>
+      <div class="split__copy reveal">
+        <p>
+          Yore commits to a Merkle (or Verkle) root over the set of account states per slot or
+          epoch. These rolling roots are anchored in the on-chain <strong>commitment registry</strong>,
+          so any historical fact can be proven by a Merkle path against the root for its slot.
+        </p>
+        <ul class="check-list">
+          <li>Archivists store historical state <strong>erasure-coded</strong> and prove possession via periodic challenge–response sampling.</li>
+          <li>A retrievability primitive that's <strong>cheap to verify, expensive to fake</strong> — the same one used by storage networks.</li>
+          <li>Bootstraps from existing archives, then progressively decentralizes and removes the trusted import as the network matures.</li>
+        </ul>
+        <p class="callout callout--warn">
+          Honest by design: at genesis, correctness of the commitment depends on the source
+          archive. It hardens progressively as the network decentralizes.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="subhead reveal">Proof of verifiable work &amp; settlement</h3>
+    <div class="split split--reverse">
+      <div class="split__media reveal">
+        <div class="glass auction">
+          <div class="auction__title">Reverse-Dutch auction · price over time</div>
+          <canvas id="auction-canvas" width="460" height="260" aria-label="Animated reverse-Dutch auction chart"></canvas>
+          <div class="auction__legend">
+            <span><i class="lg lg--price"></i>willing-to-pay</span>
+            <span><i class="lg lg--accept"></i>prover accepts</span>
+          </div>
+        </div>
+      </div>
+      <div class="split__copy reveal">
+        <p>
+          Requests clear through a <strong>reverse-Dutch auction</strong>: the price a requestor
+          will pay rises over time until a prover accepts — pricing each query by real difficulty
+          and current capacity.
+        </p>
+        <ul class="check-list">
+          <li>A prover locks collateral of at least a fixed multiple of the max payout before claiming, so the expected slash always exceeds the maximum gain — <strong>fraud is never profitable</strong>.</li>
+          <li>A fulfilled, verified request pays the auction-cleared fee plus a share of epoch emissions weighted by verified compute.</li>
+          <li>A failed proof or a missed deadline <strong>burns part of the stake</strong> and re-opens the request. Archivists are slashed for failed retrievability challenges.</li>
+        </ul>
+        <p class="callout">
+          This mirrors verifiable-work consensus: emissions follow cryptographically measured
+          useful work — not arbitrary effort.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 05 · USE CASES & MVP ===== -->
+  <section class="section" id="usecases">
+    <div class="section__head reveal">
+      <span class="kicker"><i>05</i> Use Cases &amp; MVP</span>
+      <h2 class="section__title">What a <span class="grad-text">trustless past</span> unlocks.</h2>
+      <p class="section__sub">
+        Whole classes of logic become trustless once historical reads are verifiable — and the
+        first milestone proves the full loop with a single query type.
+      </p>
+    </div>
+
+    <div class="cards cards--use">
+      <article class="glass card card--use reveal">
+        <div class="card__use-ic" data-uc="airdrop"></div>
+        <h3>Airdrop &amp; eligibility snapshots</h3>
+        <p>Prove a wallet held ≥ N of a mint at slot S — trustlessly, without an off-chain script and a privileged pusher.</p>
+      </article>
+      <article class="glass card card--use reveal">
+        <div class="card__use-ic" data-uc="defi"></div>
+        <h3>DeFi historical oracles</h3>
+        <p>Time-weighted average prices over a slot range, retroactive liquidation &amp; solvency checks, and oracle backstops from history.</p>
+      </article>
+      <article class="glass card card--use reveal">
+        <div class="card__use-ic" data-uc="gov"></div>
+        <h3>Time-weighted governance &amp; loyalty</h3>
+        <p>Voting power or rewards based on how long and how much a wallet held — proven, not asserted.</p>
+      </article>
+      <article class="glass card card--use reveal">
+        <div class="card__use-ic" data-uc="credit"></div>
+        <h3>On-chain credit &amp; reputation</h3>
+        <p>Underwriting that references a wallet's historical balances and behavior — with a verifiable proof.</p>
+      </article>
+      <article class="glass card card--use reveal">
+        <div class="card__use-ic" data-uc="gaming"></div>
+        <h3>Gaming &amp; points</h3>
+        <p>Reward past on-chain actions or holdings as verifiable facts inside a contract.</p>
+      </article>
+      <article class="glass card card--use reveal">
+        <div class="card__use-ic" data-uc="more"></div>
+        <h3>Any new historical read</h3>
+        <p>An open query-type registry and a coprocessor SDK let integrators define and verify new reads over Solana's past — beyond the built-ins.</p>
+      </article>
+    </div>
+
+    <h3 class="subhead reveal">MVP scope · Solana / Anchor</h3>
+    <p class="subhead-note reveal">
+      The first milestone is a single query type — <strong>balance-of-account-at-slot</strong> —
+      end to end on devnet, proving the full loop while keeping surface area minimal.
+    </p>
+    <div class="cards cards--4">
+      <article class="glass card card--mvp reveal">
+        <span class="card__index">on-chain</span>
+        <h3>Anchor programs</h3>
+        <p>A request queue, a commitment registry (a few seeded historical roots), and a verifier using Solana's <code>alt_bn128</code> / Groth16 syscalls for the ZK path.</p>
+      </article>
+      <article class="glass card card--mvp reveal">
+        <span class="card__index">prover</span>
+        <h3>Off-chain worker</h3>
+        <p>Pulls historical account state from an existing archive, builds the Merkle path against the seeded root, and generates a ZK proof of the read in a zkVM.</p>
+      </article>
+      <article class="glass card card--mvp reveal">
+        <span class="card__index">demo</span>
+        <h3>Sample contract</h3>
+        <p>Requests “balance of wallet W at slot S,” a prover fulfills it, the verifier checks the proof, and the contract consumes the verified result and acts on it.</p>
+      </article>
+      <article class="glass card card--mvp reveal">
+        <span class="card__index">next</span>
+        <h3>Beyond the MVP</h3>
+        <p>Add <strong>TWAP-over-range</strong> and <strong>holding-at-snapshot</strong>, ship the optimistic path, decentralize archivists with retrievability proofs, and open the prover auction permissionlessly.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== 06 · POSITIONING ===== -->
+  <section class="section" id="positioning">
+    <div class="section__head reveal">
+      <span class="kicker"><i>06</i> Positioning</span>
+      <h2 class="section__title">Where Yore fits, <span class="grad-text">honestly</span>.</h2>
+      <p class="section__sub">
+        A Solana-native wedge against a proven EVM category — with the hard parts named, not
+        hidden.
+      </p>
+    </div>
+
+    <h3 class="subhead reveal">The Solana-native wedge</h3>
+    <div class="split">
+      <div class="split__copy reveal">
+        <p>
+          Historical-state &amp; ZK coprocessors are an established category on EVM — and the model
+          is proven by general prover markets and EVM coprocessors. <strong>None serve SVM in a
+          first-class way.</strong> Yore's wedge is being the Solana-native equivalent — designed
+          around the SVM account model, slot-based time, and Solana's specific archival reality.
+        </p>
+        <p class="callout">
+          The incumbents to displace aren't other coprocessors — they're the status quo on
+          Solana: trusted off-chain scripts + multisig pushers, and centralized RPC / archive
+          providers. Yore competes by making the same answers <strong>verifiable &amp; permissionless</strong>.
+        </p>
+      </div>
+      <div class="split__media reveal">
+        <div class="glass landscape">
+          <div class="landscape__title">EVM precedent · SVM gap</div>
+          <ul class="chip-list">
+            <li class="chip">Axiom</li>
+            <li class="chip">Herodotus</li>
+            <li class="chip">Lagrange</li>
+            <li class="chip">Brevis</li>
+            <li class="chip">Boundless&nbsp;Steel</li>
+          </ul>
+          <div class="landscape__divider"><span>SVM</span></div>
+          <div class="landscape__yore">
+            <img src="assets/logo.png" alt="Yore" width="44" height="44" />
+            <div>
+              <strong>Yore</strong>
+              <span>first-class SVM coprocessor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subhead reveal">Risks &amp; honest positioning</h3>
+    <div class="risks">
+      <article class="glass risk reveal">
+        <h3><span class="risk__n">!</span>Proving cost &amp; latency</h3>
+        <p>ZK proofs over rich queries are expensive. The hybrid model and aggressive scoping of query types are the mitigation — not a claim that ZK is free.</p>
+      </article>
+      <article class="glass risk reveal">
+        <h3><span class="risk__n">!</span>Optimistic finality delay</h3>
+        <p>The cheap path carries a challenge window and a liveness assumption on honest watchers.</p>
+      </article>
+      <article class="glass risk reveal">
+        <h3><span class="risk__n">!</span>Demand validation</h3>
+        <p>How many programs need historical reads strongly enough to pay for verifiability rather than trust a multisig? Early design targets the highest-value, most fraud-sensitive reads.</p>
+      </article>
+      <article class="glass risk reveal">
+        <h3><span class="risk__n">!</span>Commitment &amp; data-layer trust</h3>
+        <p>Genesis correctness leans on existing centralized archives — decentralizing archival is explicit later work, not day one. And a proof attests correct computation against the committed root, not that the root reflects reality, so commitment integrity is a first-order property.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="cta-band">
+    <div class="glass cta-band__inner reveal">
+      <h2>Give Solana <span class="grad-text">a memory</span>.</h2>
+      <p>A permissionless market for verifiable historical reads — built around the SVM account model and Solana's slot-based time.</p>
+      <div class="cta-band__btns">
+        <a class="btn btn--primary btn--lg" href="#demo">Query the past</a>
+        <a class="btn btn--ghost btn--lg" href="#top">Back to top</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <img src="assets/logo.png" alt="Yore Coprocessor" width="48" height="48" />
+      <div>
+        <strong>yore<span>COPROCESSOR</span></strong>
+        <p>Verifiable historical-state coprocessor for Solana.</p>
+      </div>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h3>Protocol</h3>
+        <a href="#problem">The problem</a>
+        <a href="#how">How it works</a>
+        <a href="#architecture">Architecture &amp; proof</a>
+        <a href="#protocol">Commitments &amp; work</a>
+      </div>
+      <div class="footer__col">
+        <h3>Network</h3>
+        <a href="#how">How it works</a>
+        <a href="#usecases">Use cases &amp; MVP</a>
+        <a href="#positioning">Positioning</a>
+        <a href="#demo">Query the past</a>
+      </div>
+      <div class="footer__col">
+        <h3>Connect</h3>
+        <a href="#" class="footer__social">X / Twitter</a>
+        <a href="#" class="footer__social">Discord</a>
+        <a href="#" class="footer__social">GitHub</a>
+        <a href="#demo">Query the past</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__eyes" aria-hidden="true"><span class="eye"><i></i></span><span class="eye"><i></i></span></div>
+    <p>© <span id="year">2026</span> Yore Coprocessor · pre-build concept. Not financial advice.</p>
+    <p class="footer__net">Solana / SVM · ZK &amp; verifiable compute infrastructure</p>
+  </div>
+</footer>
+
+<!-- toast for copy -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
