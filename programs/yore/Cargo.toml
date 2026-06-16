@@ -1,0 +1,21 @@
+[package]
+name = "yore"
+version = "0.1.0"
+description = "Yore Coprocessor — verifiable historical-state reads for Solana"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "yore"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+
+[dependencies]
+anchor-lang = "0.31.1"
+anchor-spl = { version = "0.31.1", features = ["token", "token_2022", "associated_token"] }
